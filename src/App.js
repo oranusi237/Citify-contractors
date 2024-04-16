@@ -1,11 +1,11 @@
-import logo from './logo.svg';
+import { Box, Heading } from '@chakra-ui/react';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      
-    </div>
+    <Box className="App">
+      <Heading>Home page</Heading>
+    </Box>
   );
 }
 
