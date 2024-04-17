@@ -1,7 +1,8 @@
+import NavBar from "../NavBar"
 export default function Homepage() {
     return (
         <div>
-        hi
+        <NavBar />
         </div>
     )
 }
