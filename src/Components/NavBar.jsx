@@ -1,19 +1,24 @@
+import { Box, HStack, Flex } from '@chakra-ui/react';
 import React from 'react'
 import { Link } from "react-router-dom"
 
 const NavBar = () => {
   return (
     <div>
-         <nav>
-                    <span>
+                <nav>
+                    <Flex align='center' justify='center'>
+                    <HStack spacing='15px'>
+                    <Box>
                         <Link to="/">Home</Link>
-                    </span>
-                    <span>
+                    </Box>
+                    <Box>
                         <Link to={'About'}>About</Link>
-                    </span>
-                    <span>
+                    </Box>
+                    <Box>
                         <Link to={"Contact"}>Contact</Link>
-                    </span>
+                    </Box>
+                    </HStack>
+                    </Flex>
                 </nav>
     </div>
   )

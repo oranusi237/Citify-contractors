@@ -1,7 +1,9 @@
+import NavBar from "../../NavBar";
+
 export default function AboutUs() {
     return (
         <div>
-            <h3>The about page</h3>
+            <NavBar />
         </div>
     )
 }
