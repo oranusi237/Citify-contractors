@@ -3,47 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { ChakraProvider } from '@chakra-ui/react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Home from './Components/Pages/Home'
-import About from './Components/Pages/About/About'
-import Contact from './Components/Pages/Contact/Contact'
-import Routing from './Routing';
-import SignuPage from './Components/Pages/Auth/SignUp/SignUp';
-import LoginPage from './Components/Pages/Auth/SignIn/Login';
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-    errorElement: <div>404 not found!!</div>
-  },
-  {
-    path: "/about",
-    element: <About />
-  },
-  {
-    path: "/contact",
-    element: <Contact />
-  },
-  {
-    path: "/sign-up",
-    element: <SignuPage />
-  },
-  {
-    path: "/login",
-    element: <LoginPage />
-  },
-  {
-    path: "/profiles",
-    element: <Routing />
-  }
-]);
+import App from './App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <App />
     </ChakraProvider>
   </React.StrictMode>
 );
