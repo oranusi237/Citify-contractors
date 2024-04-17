@@ -1,8 +1,9 @@
-import NavBar from "../NavBar"
+import { Box, Heading } from "@chakra-ui/react";
+
 export default function Homepage() {
     return (
-        <div>
-        <NavBar />
-        </div>
+        <Box>
+            <Heading>Home page goes here</Heading>
+        </Box>
     )
 }
