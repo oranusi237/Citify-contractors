@@ -5,10 +5,12 @@ import Contact from './Components/Pages/Contact/Contact'
 import './App.css';
 import SignuPage from './Components/Pages/Auth/SignUp/SignUp';
 import LoginPage from './Components/Pages/Auth/SignIn/Login';
+import NavIndex from './Components/NavigationBars';
 
 function App() {
   return (
     <BrowserRouter>
+      <NavIndex />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
