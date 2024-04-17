@@ -8,11 +8,13 @@ import Home from './Components/Pages/Home'
 import About from './Components/Pages/About/About'
 import Contact from './Components/Pages/Contact/Contact'
 import Routing from './Routing';
+import SignuPage from './Components/Pages/Auth/SignUp/SignUp';
+import LoginPage from './Components/Pages/Auth/SignIn/Login';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>,
+    element: <Home />,
     errorElement: <div>404 not found!!</div>
   },
   {
@@ -22,6 +24,14 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <Contact />
+  },
+  {
+    path: "/sign-up",
+    element: <SignuPage />
+  },
+  {
+    path: "/login",
+    element: <LoginPage />
   },
   {
     path: "/profiles",
