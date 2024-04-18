@@ -1,26 +1,20 @@
-import { Box, Center, Heading, Stack, Text } from "@chakra-ui/react";
-import HeroSectionImage from "../../Assets/coaching-image.jpg";
-import CustomSolidButton from "../../Reuseables/Solidbutton";
+import { Box, Center, Flex, Heading, Icon, Spacer, Stack, Text } from "@chakra-ui/react";
+import ServiceImage from "../../Assets/customer-service.jpg";
+import ServicesCard from "./ServicesCard";
+import { GiGrowth } from "react-icons/gi";
 
 
 export default function AboutPage() {
     return (
         <Box>
             {/* hero section */}
-            <Box height="600px" bgSize="cover" bgImage={HeroSectionImage}>
-                <Stack height={"100%"} width="100%" bg="rgba(0, 0, 10, 0.8)">
-                    <Center height={"100%"}>
-                        <Stack color="white" width={["auto", "auto", "500px"]} align="center">
-                            <Heading>Welcome to City Contractors</Heading>
-                            <Text textAlign="center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi autem, quas aperiam corporis eum delectus ad non ab quibusdam dicta facere eaque quidem deserunt eligendi provident necessitatibus perspiciatis eius quod.</Text>
-                            <CustomSolidButton buttonText="Read more >>" />
-                        </Stack>
-                    </Center>
-                </Stack>
-            </Box>
+
 
             {/* Inroduction section */}
-    
+
+            <Spacer height={"70px"} />
+
+            {/* About section with header */}
             <Center>
                 <Stack alignSelf="center" justify="center" textAlign="center" width={["95%", "90%", "700px"]}>
                     <Heading>About City Contractors</Heading>
@@ -30,9 +24,33 @@ export default function AboutPage() {
                 </Stack>
             </Center>
 
-            {/* About section with header */}
+            <Spacer height={100} />
+
+            {/* services section  */}
+            <Stack align="center" justify="center">
+                <Box borderRadius={8} width={"90vw"} bg="#F7F7F7" padding={10}>
+                    <Heading textAlign="center">Our services</Heading>
+                    <Text textAlign="center">We offer professional services at all times. You can browse through our extensive services and let us know how we can help you</Text>
+                    <Flex gap={10} mt={5} justify="center" wrap="wrap">
+                        <ServicesCard description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi autem, quas aperiam corporis eum delectus" serviceImage={ServiceImage} serviceName="Service 1" />
+                        <ServicesCard description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi autem, quas aperiam corporis eum delectus" serviceImage={ServiceImage} serviceName="Service 2" />
+                        <ServicesCard description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi autem, quas aperiam corporis eum delectus" serviceImage={ServiceImage} serviceName="Service 3" />
+                        <ServicesCard description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi autem, quas aperiam corporis eum delectus" serviceImage={ServiceImage} serviceName="Service 4" />
+                    </Flex>
+                </Box>
+            </Stack>
+            <Spacer height={100} />
 
             {/* Statistics section */}
+            <Box>
+                <Heading>Statistics section</Heading>
+                <Stack justify="center" align="center" width={["90%", "90%", "250px"]} boxShadow={"-1px 1px 10px 2px rgba(192,198,165,0.75)"} padding={5}>
+                    <Stack justify="center" align="center" width="200px" height="150px" background={"#FEBEBE"} position="relative">
+                        <Icon alignSelf="center" fontSize={50} as={GiGrowth} position="absolute" />
+                    </Stack>
+
+                </Stack>
+            </Box>
 
             {/* Values and or mission and vission */}
 
