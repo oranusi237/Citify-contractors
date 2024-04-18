@@ -1,8 +1,7 @@
-import { Box, Center, Flex, Heading, Icon, Spacer, Stack, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
 import ServiceImage from "../../Assets/customer-service.jpg";
 import ServicesCard from "./ServicesCard";
-import { GiGrowth } from "react-icons/gi";
-
+import StatsBgImage from "../../Assets/handshake.jpg"
 
 export default function AboutPage() {
     return (
@@ -42,14 +41,28 @@ export default function AboutPage() {
             <Spacer height={100} />
 
             {/* Statistics section */}
-            <Box>
-                <Heading>Statistics section</Heading>
-                <Stack justify="center" align="center" width={["90%", "90%", "250px"]} boxShadow={"-1px 1px 10px 2px rgba(192,198,165,0.75)"} padding={5}>
-                    <Stack justify="center" align="center" width="200px" height="150px" background={"#FEBEBE"} position="relative">
-                        <Icon alignSelf="center" fontSize={50} as={GiGrowth} position="absolute" />
+            <Box minH="300px" height={["max-content", "max-content", "300px"]} bgImage={StatsBgImage}>
+                <Flex padding={5} wrap="wrap" gap={10} justify="center" align="center" bg="rgba(125,124,119,0.8)" height={["max-content", "max-content", "100%"]} width="100%">
+                    {/* <Stack>
+                        <Flex justify="center" gap={10}> */}
+                    <Stack borderRadius={10} style={{ backdropFilter: "blur(10px)" }} textAlign="center" bg="rgba(161,165,158, 0.7)" justify="center" align="center" width={["90%", "90%", "250px"]} padding={5}>
+                        <Heading color="white">100+</Heading>
+                        <Text fontWeight={500} color="whitesmoke">Projects completed</Text>
+                        <Text color="whitesmoke">We have completed over one hundred projects and still counting</Text>
                     </Stack>
-
-                </Stack>
+                    <Stack borderRadius={10} style={{ backdropFilter: "blur(10px)" }} textAlign="center" bg="rgba(161,162,158, 0.7)" justify="center" align="center" width={["90%", "90%", "250px"]} padding={5}>
+                        <Heading color="white">100+</Heading>
+                        <Text fontWeight={500} color="whitesmoke">Projects completed</Text>
+                        <Text color="whitesmoke">We have completed over one hundred projects and still counting</Text>
+                    </Stack>
+                    <Stack borderRadius={10} style={{ backdropFilter: "blur(10px)" }} textAlign="center" bg="rgba(161,160,158, 0.7)" justify="center" align="center" width={["90%", "90%", "250px"]} padding={5}>
+                        <Heading color="white">100+</Heading>
+                        <Text fontWeight={500} color="whitesmoke">Projects completed</Text>
+                        <Text color="whitesmoke">We have completed over one hundred projects and still counting</Text>
+                    </Stack>
+                    {/* </Flex>
+                    </Stack> */}
+                </Flex>
             </Box>
 
             {/* Values and or mission and vission */}
