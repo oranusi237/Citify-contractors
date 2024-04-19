@@ -1,4 +1,4 @@
-import { Box, Center, Flex, Heading, List, ListItem, Spacer, Stack, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
 import ServiceImage from "../../Assets/customer-service.jpg";
 import ServicesCard from "./ServicesCard";
 import StatsBgImage from "../../Assets/handshake.jpg"
@@ -7,7 +7,7 @@ import { BiSupport } from "react-icons/bi";
 import WhyChooseUsCard from "./WhyChooseUsCard";
 import StatisticsCard from "./StatsCard";
 import { ImPower } from "react-icons/im";
-import CustomSolidButton from "../../Reuseables/Solidbutton";
+import PricingCard from "../../Reuseables/Cards/PricingCard";
 
 
 export default function AboutPage() {
@@ -47,6 +47,20 @@ export default function AboutPage() {
             </Stack>
             <Spacer height={100} />
 
+            {/* packages section color="EB4C15"  */}
+
+            <section>
+                <Flex justify="center" wrap="wrap" gap={5} >
+                    <PricingCard planName={"Basic Plan"} planPrice={"50,000"} planDuration={"Yearly Plan"} feature1={"Dummy feature here"} feature2={"Dummy feature here"} feature3={"Dummy feature here"} feature4={"Dummy feature here"} feature5={"Dummy feature here"} feature6={"Dummy feature here"} feature7={"Dummy feature here"} feature8={"Dummy feature here"} feature9={"Dummy feature here"} />
+
+                    <PricingCard planName={"Gold Plan"} planPrice={"50,000"} planDuration={"Yearly Plan"} feature1={"Dummy feature here"} feature2={"Dummy feature here"} feature3={"Dummy feature here"} feature4={"Dummy feature here"} feature5={"Dummy feature here"} feature6={"Dummy feature here"} feature7={"Dummy feature here"} feature8={"Dummy feature here"} feature9={"Dummy feature here"} />
+
+                    <PricingCard planName={"Basic Plan"} planPrice={"50,000"} planDuration={"Yearly Plan"} feature1={"Dummy feature here"} feature2={"Dummy feature here"} feature3={"Dummy feature here"} feature4={"Dummy feature here"} feature5={"Dummy feature here"} feature6={"Dummy feature here"} feature7={"Dummy feature here"} feature8={"Dummy feature here"} feature9={"Dummy feature here"} />
+                </Flex>
+            </section>
+
+            <Spacer height={100} />
+
             {/* Statistics section */}
             <Box minH="300px" height={["max-content", "max-content", "300px"]} bgImage={StatsBgImage}>
                 <Flex padding={5} wrap="wrap" gap={10} justify="center" align="center" bg="rgba(125,124,119,0.8)" height={["max-content", "max-content", "100%"]} width="100%">
@@ -56,27 +70,6 @@ export default function AboutPage() {
                 </Flex>
             </Box>
             <Spacer height={100} />
-
-            {/* packages section color="EB4C15"  */}
-
-            <section>
-                <Stack textAlign="center" borderRadius={10} padding="15px" height="max-content" background="#EB4C15" width="300px">
-                    <Heading color="whitesmoke">Plan Name</Heading>
-                    <Text color="whitesmoke">Plan Duration</Text>
-                    <Heading color="whitesmoke">₦100,000</Heading>
-                    <List color="white">
-                        <ListItem>Feature one</ListItem>
-                        <ListItem>Feature 2</ListItem>
-                        <ListItem>Feature 3</ListItem>
-                        <ListItem>Feature 4</ListItem>
-                        <ListItem>Feature 5</ListItem>
-                        <ListItem>Feature 6</ListItem>
-                        <ListItem>Feature 7</ListItem>
-                        <ListItem>Feature 8</ListItem>
-                    </List>
-                    <CustomSolidButton hoverColor="#ffff" textColor="#EB4C15" buttonColor="#F7F7F7" buttonText={"Choose plan"} />
-                </Stack>
-            </section>
 
             <Spacer height={100} />
 
