@@ -8,6 +8,7 @@ import WhyChooseUsCard from "./WhyChooseUsCard";
 import StatisticsCard from "./StatsCard";
 import { ImPower } from "react-icons/im";
 import PricingCard from "../../Reuseables/Cards/PricingCard";
+import { primaryColor } from "../../Reuseables/colors";
 
 
 export default function AboutPage() {
@@ -50,7 +51,10 @@ export default function AboutPage() {
             {/* packages section color="EB4C15"  */}
 
             <section>
-                <Flex justify="center" wrap="wrap" gap={5} >
+                <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"20px"}>Our Pricing</Heading>
+                <Heading color={"#031B23"} fontSize="25px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
+                <Spacer height={10} />
+                <Flex justify="center" wrap="wrap" gap={10} >
                     <PricingCard planName={"Basic Plan"} planPrice={"50,000"} planDuration={"Yearly Plan"} feature1={"Dummy feature here"} feature2={"Dummy feature here"} feature3={"Dummy feature here"} feature4={"Dummy feature here"} feature5={"Dummy feature here"} feature6={"Dummy feature here"} feature7={"Dummy feature here"} feature8={"Dummy feature here"} feature9={"Dummy feature here"} />
 
                     <PricingCard planName={"Gold Plan"} planPrice={"50,000"} planDuration={"Yearly Plan"} feature1={"Dummy feature here"} feature2={"Dummy feature here"} feature3={"Dummy feature here"} feature4={"Dummy feature here"} feature5={"Dummy feature here"} feature6={"Dummy feature here"} feature7={"Dummy feature here"} feature8={"Dummy feature here"} feature9={"Dummy feature here"} />
