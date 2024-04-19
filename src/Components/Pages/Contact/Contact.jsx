@@ -1,9 +1,7 @@
-import NavBar from "../../NavBar";
-
 export default function ContactPage() {
     return (
         <div>
-            <NavBar />
+            <h3>This is the contact page</h3>
         </div>
     )
 }

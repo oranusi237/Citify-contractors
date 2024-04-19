@@ -7,7 +7,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './Components/Pages/Home'
 import About from './Components/Pages/About/About'
 import Contact from './Components/Pages/Contact/Contact'
-import Routing from './Components/Routing';
+import Routing from './Routing';
 
 const router = createBrowserRouter([
   {
@@ -33,7 +33,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <ChakraProvider>
-      <RouterProvider router={router} />
+      <App />
     </ChakraProvider>
   </React.StrictMode>
 );
