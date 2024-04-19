@@ -1,4 +1,3 @@
-import { Box, Heading } from '@chakra-ui/react';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Home from './Components/Pages/Home'
 import About from './Components/Pages/About/About'
@@ -12,12 +11,13 @@ import PageNotFound from "./Components/Pages/NotFound";
 function App() {
   return (
     <BrowserRouter>
+      <NavIndex />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="sign-up" element={<SignuPage />} />
+        <Route path="sign-up" element={<SignUpPage />} />
       </Routes>
     </BrowserRouter>
   );
