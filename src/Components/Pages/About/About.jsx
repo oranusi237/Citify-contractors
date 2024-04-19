@@ -6,6 +6,7 @@ import { GrValidate, GrDocumentPerformance } from "react-icons/gr";
 import { TbCurrencyNaira } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import WhyChooseUsCard from "./WhyChooseUsCard";
+import StatisticsCard from "./StatsCard";
 
 
 export default function AboutPage() {
@@ -48,25 +49,9 @@ export default function AboutPage() {
             {/* Statistics section */}
             <Box minH="300px" height={["max-content", "max-content", "300px"]} bgImage={StatsBgImage}>
                 <Flex padding={5} wrap="wrap" gap={10} justify="center" align="center" bg="rgba(125,124,119,0.8)" height={["max-content", "max-content", "100%"]} width="100%">
-                    {/* <Stack>
-                        <Flex justify="center" gap={10}> */}
-                    <Stack borderRadius={10} style={{ backdropFilter: "blur(10px)" }} textAlign="center" bg="rgba(161,165,158, 0.7)" justify="center" align="center" width={["90%", "90%", "250px"]} padding={5}>
-                        <Heading color="white">100+</Heading>
-                        <Text fontWeight={500} color="whitesmoke">Projects completed</Text>
-                        <Text color="whitesmoke">We have completed over one hundred projects and still counting</Text>
-                    </Stack>
-                    <Stack borderRadius={10} style={{ backdropFilter: "blur(10px)" }} textAlign="center" bg="rgba(161,162,158, 0.7)" justify="center" align="center" width={["90%", "90%", "250px"]} padding={5}>
-                        <Heading color="white">100+</Heading>
-                        <Text fontWeight={500} color="whitesmoke">Projects completed</Text>
-                        <Text color="whitesmoke">We have completed over one hundred projects and still counting</Text>
-                    </Stack>
-                    <Stack borderRadius={10} style={{ backdropFilter: "blur(10px)" }} textAlign="center" bg="rgba(161,160,158, 0.7)" justify="center" align="center" width={["90%", "90%", "250px"]} padding={5}>
-                        <Heading color="white">100+</Heading>
-                        <Text fontWeight={500} color="whitesmoke">Projects completed</Text>
-                        <Text color="whitesmoke">We have completed over one hundred projects and still counting</Text>
-                    </Stack>
-                    {/* </Flex>
-                    </Stack> */}
+                    <StatisticsCard />
+                    <StatisticsCard />
+                    <StatisticsCard />
                 </Flex>
             </Box>
             <Spacer height={100} />
