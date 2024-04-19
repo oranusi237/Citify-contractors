@@ -8,9 +8,9 @@ export default function DesktopNav() {
         <Box>
             <NavContainer children={
                 <>
-                    <Link to="/"><Heading>Home</Heading></Link>
+                    <Link to="/"><Heading color="white">Home</Heading></Link>
                     <Spacer />
-                    <NavItemsRenderers direction="row" />
+                    <NavItemsRenderers color="white" direction="row" />
                 </>
             } />
         </Box >
