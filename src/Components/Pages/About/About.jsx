@@ -1,12 +1,13 @@
-import { Box, Center, Flex, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
+import { Box, Center, Flex, Heading, List, ListItem, Spacer, Stack, Text } from "@chakra-ui/react";
 import ServiceImage from "../../Assets/customer-service.jpg";
 import ServicesCard from "./ServicesCard";
 import StatsBgImage from "../../Assets/handshake.jpg"
 import { GrValidate, GrDocumentPerformance } from "react-icons/gr";
-import { TbCurrencyNaira } from "react-icons/tb";
 import { BiSupport } from "react-icons/bi";
 import WhyChooseUsCard from "./WhyChooseUsCard";
 import StatisticsCard from "./StatsCard";
+import { ImPower } from "react-icons/im";
+import CustomSolidButton from "../../Reuseables/Solidbutton";
 
 
 export default function AboutPage() {
@@ -55,18 +56,42 @@ export default function AboutPage() {
                 </Flex>
             </Box>
             <Spacer height={100} />
+
+            {/* packages section color="EB4C15"  */}
+
+            <section>
+                <Stack textAlign="center" borderRadius={10} padding="15px" height="max-content" background="#EB4C15" width="300px">
+                    <Heading color="whitesmoke">Plan Name</Heading>
+                    <Text color="whitesmoke">Plan Duration</Text>
+                    <Heading color="whitesmoke">₦100,000</Heading>
+                    <List color="white">
+                        <ListItem>Feature one</ListItem>
+                        <ListItem>Feature 2</ListItem>
+                        <ListItem>Feature 3</ListItem>
+                        <ListItem>Feature 4</ListItem>
+                        <ListItem>Feature 5</ListItem>
+                        <ListItem>Feature 6</ListItem>
+                        <ListItem>Feature 7</ListItem>
+                        <ListItem>Feature 8</ListItem>
+                    </List>
+                    <CustomSolidButton hoverColor="#ffff" textColor="#EB4C15" buttonColor="#F7F7F7" buttonText={"Choose plan"} />
+                </Stack>
+            </section>
+
+            <Spacer height={100} />
+
             {/* why choose us  */}
             <Box padding={10} bg="#F7F7F7">
                 <Stack bg="">
                     <Heading>Why choose us</Heading>
                     <Flex gap="15px" wrap="wrap">
-                        <WhyChooseUsCard cardIcon={GrValidate} cardHeading={"Professional appraoch"} description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis asperiores est, commodi aliquid ipsum, dolores tempore tenetur, magni deserunt blanditiis rem sapiente labore ad corrupti at. Sapiente, repellat error?" />
+                        <WhyChooseUsCard cardIcon={GrValidate} cardHeading={"Integrity"} description="At City Contractors, integrity guides our actions. We uphold honesty and transparency in all dealings, building trust with our clients through ethical practices and clear communication" />
 
-                        <WhyChooseUsCard cardIcon={GrDocumentPerformance} cardHeading={"Proven track record"} description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis asperiores est, commodi aliquid ipsum, dolores tempore tenetur, magni deserunt blanditiis rem sapiente labore ad corrupti at. Sapiente, repellat error?" />
+                        <WhyChooseUsCard cardIcon={ImPower} cardHeading={"Quality"} description="Quality is paramount to us. We are committed to delivering work that stands the test of time, prioritizing durability, attention to detail, and precision to ensure client satisfaction." />
 
-                        <WhyChooseUsCard cardIcon={TbCurrencyNaira} cardHeading={"Cost optimization"} description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis asperiores est, commodi aliquid ipsum, dolores tempore tenetur, magni deserunt blanditiis rem sapiente labore ad corrupti at. Sapiente, repellat error?" />
+                        <WhyChooseUsCard cardIcon={GrDocumentPerformance} cardHeading={"Innovation"} description="We embrace innovation to stay ahead of industry trends. By adopting cutting-edge technologies and methods, we provide modern solutions that enhance efficiency and functionality." />
 
-                        <WhyChooseUsCard cardIcon={BiSupport} cardHeading={"Customer support"} description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis reiciendis asperiores est, commodi aliquid ipsum, dolores tempore tenetur, magni deserunt blanditiis rem sapiente labore ad corrupti at. Sapiente, repellat error?" />
+                        <WhyChooseUsCard cardIcon={BiSupport} cardHeading={"Customer Focus"} description="Our clients are our priority. We listen attentively to their needs, communicate proactively, and adapt flexibly to exceed expectations, building strong relationships based on collaboration and shared success" />
                     </Flex>
                 </Stack>
             </Box>
