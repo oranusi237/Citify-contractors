@@ -76,7 +76,7 @@ export default function LoginPage() {
 
 
     return (
-        <Flex align="center" justify="center">
+        <Flex minH="80vh" justify="center">
             <form onSubmit={handleSubmit}>
                 <Stack borderRadius={8} boxShadow={"0px 0px 12px 13px rgba(226,226,226,0.54)"} mt={"70px"} padding={"20px"} width={["90vw", "80vw", "500px"]}>
                     <Heading margin={"10px 0px"} textAlign={"center"} fontSize={"25px"}>Login to your account</Heading>
