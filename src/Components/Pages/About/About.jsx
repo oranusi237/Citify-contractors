@@ -1,7 +1,7 @@
 import { Box, Center, Flex, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
 import ServiceImage from "../../Assets/customer-service.jpg";
-import ServicesCard from "./ServicesCard";
 import StatsBgImage from "../../Assets/handshake.jpg"
+import ServicesCard from "./ServicesCard";
 import { GrValidate, GrDocumentPerformance } from "react-icons/gr";
 import { BiSupport } from "react-icons/bi";
 import WhyChooseUsCard from "./WhyChooseUsCard";
@@ -9,6 +9,7 @@ import StatisticsCard from "./StatsCard";
 import { ImPower } from "react-icons/im";
 import PricingCard from "../../Reuseables/Cards/PricingCard";
 import { primaryColor } from "../../Reuseables/colors";
+import ProfileCard from "../../Reuseables/Cards/ProfileCard";
 
 
 export default function AboutPage() {
@@ -26,7 +27,7 @@ export default function AboutPage() {
                 <Stack alignSelf="center" justify="center" textAlign="center" width={["95%", "90%", "700px"]}>
                     <Heading>About City Contractors</Heading>
                     <Text>
-                        At City Contractors, we are a dedicated team of professionals committed to excellence in every project we undertake. With years of experience and a passion for what we do, we strive to deliver top-notch services that meet our clients' unique needs and exceed their expectations. Our team's expertise, combined with our unwavering commitment to quality and customer satisfaction, sets us apart as a trusted name in our industry.
+                        We are a dedicated team of professionals committed to excellence in every project we undertake. With years of experience and a passion for what we do, we strive to deliver top-notch services that meet our clients' unique needs and exceed their expectations. Our team's expertise, combined with our unwavering commitment to quality and customer satisfaction, sets us apart as a trusted name in our industry.
                     </Text>
                 </Stack>
             </Center>
@@ -51,7 +52,7 @@ export default function AboutPage() {
             {/* packages section color="EB4C15"  */}
 
             <section>
-                <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"20px"}>Our Pricing</Heading>
+                <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"20px"}>Pricing</Heading>
                 <Heading color={"#031B23"} fontSize="25px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
                 <Spacer height={10} />
                 <Flex justify="center" wrap="wrap" gap={10} >
@@ -94,7 +95,14 @@ export default function AboutPage() {
             </Box>
 
             {/* Values and or mission and vission */}
-
+            <Stack my={20}>
+                <Heading textAlign="center">Meet our team</Heading>
+                <Flex justify="center" gap={10} wrap="wrap">
+                    <ProfileCard personName="John Doe" personPosition={"CEO"} />
+                    <ProfileCard personName="John Doe" personPosition={"CEO"} />
+                    <ProfileCard personName="John Doe" personPosition={"CEO"} />
+                </Flex>
+            </Stack>
             {/*Profile section is available */}
         </Box>
     )
