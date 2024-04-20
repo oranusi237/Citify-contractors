@@ -7,6 +7,7 @@ import SignUpPage from './Components/Pages/Auth/SignUp/SignUp';
 import LoginPage from './Components/Pages/Auth/SignIn/Login';
 import NavIndex from './Components/NavigationBars';
 import PageNotFound from "./Components/Pages/NotFound";
+import Footer from "./Components/Reuseables/Sections/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="sign-up" element={<SignUpPage />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
