@@ -10,6 +10,8 @@ import { ImPower } from "react-icons/im";
 import PricingCard from "../../Reuseables/Cards/PricingCard";
 import { primaryColor } from "../../Reuseables/colors";
 import ProfileCard from "../../Reuseables/Cards/ProfileCard";
+import { TbTarget } from "react-icons/tb";
+import { BsEye } from "react-icons/bs";
 
 
 export default function AboutPage() {
@@ -25,17 +27,36 @@ export default function AboutPage() {
             {/* About section with header */}
             <Center>
                 <Stack alignSelf="center" justify="center" textAlign="center" width={["95%", "90%", "700px"]}>
-                    <Heading>About City Contractors</Heading>
+                    <Heading>About Citify Contractors</Heading>
                     <Text>
                         We are a dedicated team of professionals committed to excellence in every project we undertake. With years of experience and a passion for what we do, we strive to deliver top-notch services that meet our clients' unique needs and exceed their expectations. Our team's expertise, combined with our unwavering commitment to quality and customer satisfaction, sets us apart as a trusted name in our industry.
                     </Text>
                 </Stack>
             </Center>
 
+            <Spacer height={"80px"} />
+            {/* Mission and vission statement */}
+
+            <Box>
+                <Heading mb={5} textAlign="center">Our <span style={{ color: primaryColor }}>mission</span> and <span style={{ color: primaryColor }}>vission</span></Heading>
+                <Flex pt={10} gap={20} wrap={"wrap"} justify="center" align="center">
+                    <Stack borderRadius={8} boxShadow={" 0px 0px 8px 30px rgba(236,236,236,0.75)"} padding={5} align="center" width={["100%", "300px", "400px"]}>
+                        <TbTarget color={primaryColor} fontSize={50} />
+                        <Heading fontSize={"25px"} textAlign="center">Mission</Heading>
+                        <Text textAlign="center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur reprehenderit aliquam ea neque quia magni cumque pariatur molestiae nulla incidunt, dolore saepe eligendi, porro assumenda repudiandae enim voluptatum repellendus quaerat?</Text>
+                    </Stack>
+                    <Stack borderRadius={8} boxShadow={" 0px 0px 8px 30px rgba(236,236,236,0.75)"} padding={5} align="center" width={["100%", "300px", "400px"]}>
+                        <BsEye color={primaryColor} fontSize={50} />
+                        <Heading fontSize={"25px"} textAlign="center">Vision</Heading>
+                        <Text textAlign="center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur reprehenderit aliquam ea neque quia magni cumque pariatur molestiae nulla incidunt, dolore saepe eligendi, porro assumenda repudiandae enim voluptatum repellendus quaerat?</Text>
+                    </Stack>
+                </Flex>
+            </Box>
+
             <Spacer height={100} />
 
             {/* services section  */}
-            <Stack align="center" justify="center">
+            <Stack id="services" align="center" justify="center">
                 <Box borderRadius={8} width={"90vw"} bg="#F7F7F7" padding={10}>
                     <Heading textAlign="center">Our services</Heading>
                     <Text textAlign="center">We offer professional services at all times. You can browse through our extensive services and let us know how we can help you</Text>
@@ -52,8 +73,8 @@ export default function AboutPage() {
             {/* packages section color="EB4C15"  */}
 
             <section>
-                <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"20px"}>Pricing</Heading>
-                <Heading color={"#031B23"} fontSize="25px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
+                <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"25px"}>Pricing</Heading>
+                <Heading color={"#031B23"} fontWeight={500} fontSize="23px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
                 <Spacer height={10} />
                 <Flex justify="center" wrap="wrap" gap={10} >
                     <PricingCard planName={"Basic Plan"} planPrice={"50,000"} planDuration={"Yearly Plan"} feature1={"Dummy feature here"} feature2={"Dummy feature here"} feature3={"Dummy feature here"} feature4={"Dummy feature here"} feature5={"Dummy feature here"} feature6={"Dummy feature here"} feature7={"Dummy feature here"} feature8={"Dummy feature here"} feature9={"Dummy feature here"} />
@@ -66,17 +87,7 @@ export default function AboutPage() {
 
             <Spacer height={100} />
 
-            {/* Statistics section */}
-            <Box minH="300px" height={["max-content", "max-content", "300px"]} bgImage={StatsBgImage}>
-                <Flex padding={5} wrap="wrap" gap={10} justify="center" align="center" bg="rgba(125,124,119,0.8)" height={["max-content", "max-content", "100%"]} width="100%">
-                    <StatisticsCard />
-                    <StatisticsCard />
-                    <StatisticsCard />
-                </Flex>
-            </Box>
-            <Spacer height={100} />
 
-            <Spacer height={100} />
 
             {/* why choose us  */}
             <Box padding={10} bg="#F7F7F7">
@@ -94,7 +105,8 @@ export default function AboutPage() {
                 </Stack>
             </Box>
 
-            {/* Values and or mission and vission */}
+
+            {/*Profile section is available */}
             <Stack my={20}>
                 <Heading textAlign="center">Meet our team</Heading>
                 <Flex justify="center" gap={10} wrap="wrap">
@@ -103,7 +115,17 @@ export default function AboutPage() {
                     <ProfileCard personName="John Doe" personPosition={"CEO"} />
                 </Flex>
             </Stack>
-            {/*Profile section is available */}
+
+            {/* Statistics section */}
+            <Box minH="300px" height={["max-content", "max-content", "300px"]} bgImage={StatsBgImage}>
+                <Flex padding={5} wrap="wrap" gap={10} justify="center" align="center" bg="rgba(125,124,119,0.8)" height={["max-content", "max-content", "100%"]} width="100%">
+                    <StatisticsCard />
+                    <StatisticsCard />
+                    <StatisticsCard />
+                </Flex>
+            </Box>
+            <Spacer height={100} />
+
         </Box>
     )
 }
