@@ -34,7 +34,7 @@ export default function AboutPage() {
                 </Stack>
             </Center>
 
-            <Spacer height={100} />
+            <Spacer height={"80px"} />
             {/* Mission and vission statement */}
 
             <Box>
@@ -56,7 +56,7 @@ export default function AboutPage() {
             <Spacer height={100} />
 
             {/* services section  */}
-            <Stack align="center" justify="center">
+            <Stack id="services" align="center" justify="center">
                 <Box borderRadius={8} width={"90vw"} bg="#F7F7F7" padding={10}>
                     <Heading textAlign="center">Our services</Heading>
                     <Text textAlign="center">We offer professional services at all times. You can browse through our extensive services and let us know how we can help you</Text>
@@ -73,8 +73,8 @@ export default function AboutPage() {
             {/* packages section color="EB4C15"  */}
 
             <section>
-                <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"20px"}>Pricing</Heading>
-                <Heading color={"#031B23"} fontSize="25px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
+                <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"25px"}>Pricing</Heading>
+                <Heading color={"#031B23"} fontWeight={500} fontSize="23px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
                 <Spacer height={10} />
                 <Flex justify="center" wrap="wrap" gap={10} >
                     <PricingCard planName={"Basic Plan"} planPrice={"50,000"} planDuration={"Yearly Plan"} feature1={"Dummy feature here"} feature2={"Dummy feature here"} feature3={"Dummy feature here"} feature4={"Dummy feature here"} feature5={"Dummy feature here"} feature6={"Dummy feature here"} feature7={"Dummy feature here"} feature8={"Dummy feature here"} feature9={"Dummy feature here"} />
@@ -88,8 +88,6 @@ export default function AboutPage() {
             <Spacer height={100} />
 
 
-
-            <Spacer height={100} />
 
             {/* why choose us  */}
             <Box padding={10} bg="#F7F7F7">
