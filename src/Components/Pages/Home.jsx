@@ -23,9 +23,11 @@ export default function Homepage() {
             <Flex alignItems={"center"} flexDirection={"column"} textAlign={"center"}>
         <Heading as="h2">About Us</Heading>
         <Text fontSize="lg">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet dolorum ipsum et beatae molestias ut 
-          dignissimos aliquid reprehenderit assumenda, quidem, nihil ducimus vitae. Debitis maxime modi animi 
-          voluptatum autem corporis.
+        We are a dedicated team of professionals committed to excellence in every project we undertake. 
+        With years of experience and a passion for what we do, we strive to deliver top-notch services 
+        that meet our clients' unique needs and exceed their expectations. Our team's expertise, 
+        combined with our unwavering commitment to quality and customer satisfaction, 
+        sets us apart as a trusted name in our industry.
         </Text>
         <Button marginTop="5px" >
           <a href="/About">Read More</a>
@@ -40,7 +42,7 @@ export default function Homepage() {
       <Center flexDirection={"column"} flexWrap={"wrap"}>
         <Text textAlign={"center"}>What You Get</Text>
         <Heading textAlign={"center"}>Our Services</Heading>
-        <HStack spacing={12} textAlign={"center"}>
+        <HStack  spacing={12} textAlign={"center"}>
           <Box>
           <Box display={"inline-flex"}> <FaLandmark color="#00840B" size={60}/></Box>
           <Text> Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet 
