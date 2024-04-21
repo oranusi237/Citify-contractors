@@ -38,7 +38,7 @@ export default function AboutPage() {
             {/* Mission and vission statement */}
 
             <Box>
-                <Heading textAlign="center">Our <span style={{ color: primaryColor }}>mission</span> and <span style={{ color: primaryColor }}>vission</span></Heading>
+                <Heading mb={5} textAlign="center">Our <span style={{ color: primaryColor }}>mission</span> and <span style={{ color: primaryColor }}>vission</span></Heading>
                 <Flex pt={10} gap={20} wrap={"wrap"} justify="center" align="center">
                     <Stack borderRadius={8} boxShadow={" 0px 0px 8px 30px rgba(236,236,236,0.75)"} padding={5} align="center" width={["100%", "300px", "400px"]}>
                         <TbTarget color={primaryColor} fontSize={50} />
