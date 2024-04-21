@@ -118,7 +118,7 @@ export default function SignUpPage() {
 
 
     return (
-        <Flex minH="100vh" height="auto" align="center" justify="center">
+        <Flex mb={10} minH="100vh" height="auto" align="center" justify="center">
             <form onSubmit={handleSubmit}>
                 <Stack borderRadius={8} boxShadow={"0px 0px 12px 13px rgba(226,226,226,0.54)"} mt={"50px"} mb={"50px"} padding={"20px"} width={["90vw", "80vw", "500px"]}>
                     <Heading margin={"10px 0px"} textAlign="center" fontSize="25px">Create new account</Heading>
