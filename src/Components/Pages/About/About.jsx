@@ -29,26 +29,26 @@ export default function AboutPage() {
                 <Stack alignSelf="center" justify="center" textAlign="center" width={["95%", "90%", "700px"]}>
                     <Heading>About Citify Contractors</Heading>
                     <Text>
-                        We are a dedicated team of professionals committed to excellence in every project we undertake. With years of experience and a passion for what we do, we strive to deliver top-notch services that meet our clients' unique needs and exceed their expectations. Our team's expertise, combined with our unwavering commitment to quality and customer satisfaction, sets us apart as a trusted name in our industry.
+                        Citify Contractors is a forward-thinking marketing and branding firm specializing in the real estate industry. With a commitment to innovation and excellence, we aim to redefine the standards of property marketing, offering unique solutions to both real estate firms and individual clients.
                     </Text>
                 </Stack>
             </Center>
 
             <Spacer height={"80px"} />
-            {/* Mission and vission statement */}
 
+            {/* Mission and vission statement */}
             <Box>
-                <Heading mb={5} textAlign="center">Our <span style={{ color: primaryColor }}>mission</span> and <span style={{ color: primaryColor }}>vission</span></Heading>
+                <Heading mb={5} textAlign="center">Our <span style={{ color: primaryColor }}>mission</span> and <span style={{ color: primaryColor }}>vision</span></Heading>
                 <Flex pt={10} gap={20} wrap={"wrap"} justify="center" align="center">
-                    <Stack borderRadius={8} boxShadow={" 0px 0px 8px 30px rgba(236,236,236,0.75)"} padding={5} align="center" width={["100%", "300px", "400px"]}>
+                    <Stack height="230px" borderRadius={8} boxShadow={" 0px 0px 8px 30px rgba(236,236,236,0.75)"} padding={5} align="center" width={["100%", "300px", "400px"]}>
                         <TbTarget color={primaryColor} fontSize={50} />
                         <Heading fontSize={"25px"} textAlign="center">Mission</Heading>
-                        <Text textAlign="center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur reprehenderit aliquam ea neque quia magni cumque pariatur molestiae nulla incidunt, dolore saepe eligendi, porro assumenda repudiandae enim voluptatum repellendus quaerat?</Text>
+                        <Text textAlign="center">To be the leading force in revolutionizing property marketing and branding, fostering growth and prosperity for our partners and clients alike.</Text>
                     </Stack>
-                    <Stack borderRadius={8} boxShadow={" 0px 0px 8px 30px rgba(236,236,236,0.75)"} padding={5} align="center" width={["100%", "300px", "400px"]}>
+                    <Stack height="230px" borderRadius={8} boxShadow={" 0px 0px 8px 30px rgba(236,236,236,0.75)"} padding={5} align="center" width={["100%", "300px", "400px"]}>
                         <BsEye color={primaryColor} fontSize={50} />
                         <Heading fontSize={"25px"} textAlign="center">Vision</Heading>
-                        <Text textAlign="center">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tenetur reprehenderit aliquam ea neque quia magni cumque pariatur molestiae nulla incidunt, dolore saepe eligendi, porro assumenda repudiandae enim voluptatum repellendus quaerat?</Text>
+                        <Text textAlign="center">Our mission is to provide innovative and effective marketing solutions, shaping a seamless and rewarding experience for real estate professionals and property buyers</Text>
                     </Stack>
                 </Flex>
             </Box>
@@ -92,15 +92,17 @@ export default function AboutPage() {
             {/* why choose us  */}
             <Box padding={10} bg="#F7F7F7">
                 <Stack bg="">
-                    <Heading>Why choose us</Heading>
+                    <Heading>Detailed Marketting Strategy</Heading>
                     <Flex gap="15px" wrap="wrap">
-                        <WhyChooseUsCard cardIcon={GrValidate} cardHeading={"Integrity"} description="At City Contractors, integrity guides our actions. We uphold honesty and transparency in all dealings, building trust with our clients through ethical practices and clear communication" />
+                        <WhyChooseUsCard cardIcon={GrValidate} cardHeading={"Partnership Development"} description="At City Contractors, integrity guides our actions. We uphold honesty and transparency in all dealings, building trust with our clients through ethical practices and clear communication" />
 
-                        <WhyChooseUsCard cardIcon={ImPower} cardHeading={"Quality"} description="Quality is paramount to us. We are committed to delivering work that stands the test of time, prioritizing durability, attention to detail, and precision to ensure client satisfaction." />
+                        <WhyChooseUsCard cardIcon={BiSupport} cardHeading={"Client-Centric Approach"} description="Develop a client referral program to encourage satisfied clients to refer others, fostering a positive word-of-mouth reputation." />
 
-                        <WhyChooseUsCard cardIcon={GrDocumentPerformance} cardHeading={"Innovation"} description="We embrace innovation to stay ahead of industry trends. By adopting cutting-edge technologies and methods, we provide modern solutions that enhance efficiency and functionality." />
+                        <WhyChooseUsCard cardIcon={ImPower} cardHeading={"Digital Presence"} description="Leverage social media, SEO, and online advertising to enhance brand visibility and attract potential clients." />
 
-                        <WhyChooseUsCard cardIcon={BiSupport} cardHeading={"Customer Focus"} description="Our clients are our priority. We listen attentively to their needs, communicate proactively, and adapt flexibly to exceed expectations, building strong relationships based on collaboration and shared success" />
+                        <WhyChooseUsCard cardIcon={GrDocumentPerformance} cardHeading={"Event Marketing"} description="Participate in industry events, host seminars, and engage in community activities to build brand awareness." />
+
+                        <WhyChooseUsCard cardIcon={BiSupport} cardHeading={"Educational Content"} description="Create and share informative content about the real estate market, establishing Citify Contractors as a knowledge leader" />
                     </Flex>
                 </Stack>
             </Box>
@@ -108,7 +110,8 @@ export default function AboutPage() {
 
             {/*Profile section is available */}
             <Stack my={20}>
-                <Heading textAlign="center">Meet our team</Heading>
+                <Heading textAlign="center">Our Team</Heading>
+                <Text fontWeight={600} textAlign="center">Meet the dynamic individuals driving Citify Contractors to success:</Text>
                 <Flex justify="center" gap={10} wrap="wrap">
                     <ProfileCard personName="John Doe" personPosition={"CEO"} />
                     <ProfileCard personName="John Doe" personPosition={"CEO"} />
