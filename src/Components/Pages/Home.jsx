@@ -45,20 +45,20 @@ export default function Homepage() {
 
       <Spacer height={50} />
 
-      <Box p={4} mt={5} background="#282C35" minH={"max-content"} borderRadius="20px">
-        <Center py={10} gap={3} flexDirection={"column"} flexWrap={"wrap"}>
+      <Stack mt={5} background="#282C35" minH={"max-content"} borderRadius="20px">
+        <Stack  justify="center" align="center"  py={10}  flexWrap={"wrap"}>
           <Text color="white" textAlign={"center"}>What You Get</Text>
           <Heading color="white" textAlign={"center"}>Our Services</Heading>
 
-          <Flex gap={10}>
+          <Flex width="100%" justify="center" wrap="wrap" gap={10}>
             <ServicesCard serviceName={"Real estate management"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
 
             <ServicesCard serviceName={"Real estate management"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
 
             <ServicesCard serviceName={"Real estate management"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
           </Flex>
-        </Center>
-      </Box>
+        </Stack>
+      </Stack>
 
 
       <Box mt={5} >
