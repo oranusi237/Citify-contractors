@@ -33,7 +33,8 @@ export default function Homepage() {
               <Stack >
                 <Heading fontSize="20px">About us</Heading>
                 <Heading fontSize="25px">Why choosing us is best for you</Heading>
-                <Text>We are a dedicated team of professionals committed to excellence in every project we undertake. With years of experience and a passion for what we do, we strive to deliver top-notch services that meet our clients' unique needs and exceed their expectations. Our team's expertise, combined with our unwavering commitment to quality and customer satisfaction, sets us apart as a trusted name in our industry.</Text>
+                {/* I used the shorter version of the about here and the lengthier one on the about page  */}
+                <Text>Citify Contractors is a forward-thinking marketing and branding firm specializing in the real estate industry. With a commitment to innovation and excellence, we aim to redefine the standards of property marketing, offering unique solutions to both real estate firms and individual clients..</Text>
                 <Link to="/about">
                   <CustomSolidButton buttonWidth="200px" buttonText="Find more about us" />
                 </Link>
@@ -46,7 +47,7 @@ export default function Homepage() {
       <Spacer height={50} />
 
       <Stack mt={5} background="#282C35" minH={"max-content"} borderRadius="20px">
-        <Stack  justify="center" align="center"  py={10}  flexWrap={"wrap"}>
+        <Stack justify="center" align="center" py={10} flexWrap={"wrap"}>
           <Text color="white" textAlign={"center"}>What You Get</Text>
           <Heading color="white" textAlign={"center"}>Our Services</Heading>
 
