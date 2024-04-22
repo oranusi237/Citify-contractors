@@ -4,7 +4,7 @@ import { primaryColor } from "../../Reuseables/colors";
 export default function WhyChooseUsCard({ cardIcon, cardHeading, description }) {
     return (
         <Box>
-            <Stack padding={5} width="370px">
+            <Stack padding={5} width={["100%", "370px", "370px"]}>
                 <Stack borderRadius="50%" padding={3} bg="white" height="90px" width="90px" justify="center" align="center">
                     <Icon color={primaryColor} as={cardIcon} fontSize="50px" />
                 </Stack>
