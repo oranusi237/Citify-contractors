@@ -1,6 +1,7 @@
 import { Box, Stack, ListItem, List, Heading, Text, } from "@chakra-ui/react";
 import CustomSolidButton from "../Solidbutton";
 import { primaryColor } from "../colors";
+import HoverAnimationContainer from "../../AnimationContainers/Hover";
 // import { useEffect, } from "react";
 
 export default function PricingCard({ planName, numberOfFeatures, planDuration, planPriceNGN, planPriceUSD, feature1, feature2, feature3, feature4, feature5,
@@ -25,31 +26,33 @@ export default function PricingCard({ planName, numberOfFeatures, planDuration, 
 
     return (
         <Box>
-            <Stack boxSizing="border-box" margin textAlign="center" borderRadius={10} padding="15px" height="max-content" background={goldPlan ? "#EB4C15" : "white"}
-                boxShadow={goldPlan ? "" : "0px 0px 12px 13px rgba(226,226,226,0.54)"} width="300px" >
-                <Heading color={goldPlan ? "whitesmoke" : primaryColor}>{planName}</Heading>
-                <Text fontWeight={600} color={"black"}>{planDuration}</Text>
-                <Heading color={goldPlan ? "whitesmoke" : primaryColor}>₦{planPriceNGN}</Heading>
-                <Heading color={goldPlan ? "whitesmoke" : primaryColor}>(${planPriceUSD})</Heading>
-                <List color={goldPlan ? "whitesmoke" : "black"}>
-                    <ListItem>1. {feature1}</ListItem>
-                    <ListItem>2. {feature2}</ListItem>
-                    <ListItem>3. {feature3}</ListItem>
-                    <ListItem>4. {feature4}</ListItem>
-                    <ListItem>5. {feature5}</ListItem>
-                    <ListItem>6. {feature6}</ListItem>
-                    <ListItem>7. {feature7}</ListItem>
-                    {numberOfFeatures >= 8 && <ListItem>8. {feature8}</ListItem>}
-                    {numberOfFeatures >= 9 && <ListItem>9. {feature9}</ListItem>}
-                    {numberOfFeatures >= 10 && <ListItem>10. {feature10}</ListItem>}
-                    {numberOfFeatures >= 11 && <ListItem>11. {feature11}</ListItem>}
-                    {numberOfFeatures === 12 && <ListItem>12. {feature12}</ListItem>}
-                </List>
-                {/* <Spacer /> */}
-                <Stack pb={5}>
-                    <CustomSolidButton hoverColor={goldPlan && "#ffff"} textColor={goldPlan ? "#EB4C15" : "white"} buttonColor={!goldPlan ? primaryColor : "#F7F7F7"} buttonText={"Choose plan"} />
+            <HoverAnimationContainer children={
+                <Stack boxSizing="border-box" margin textAlign="center" borderRadius={10} padding="15px" height="max-content" background={goldPlan ? "#EB4C15" : "white"}
+                    boxShadow={goldPlan ? "" : "0px 0px 12px 13px rgba(226,226,226,0.54)"} width="300px" >
+                    <Heading color={goldPlan ? "whitesmoke" : primaryColor}>{planName}</Heading>
+                    <Text fontWeight={600} color={"black"}>{planDuration}</Text>
+                    <Heading color={goldPlan ? "whitesmoke" : primaryColor}>₦{planPriceNGN}</Heading>
+                    <Heading color={goldPlan ? "whitesmoke" : primaryColor}>(${planPriceUSD})</Heading>
+                    <List color={goldPlan ? "whitesmoke" : "black"}>
+                        <ListItem>1. {feature1}</ListItem>
+                        <ListItem>2. {feature2}</ListItem>
+                        <ListItem>3. {feature3}</ListItem>
+                        <ListItem>4. {feature4}</ListItem>
+                        <ListItem>5. {feature5}</ListItem>
+                        <ListItem>6. {feature6}</ListItem>
+                        <ListItem>7. {feature7}</ListItem>
+                        {numberOfFeatures >= 8 && <ListItem>8. {feature8}</ListItem>}
+                        {numberOfFeatures >= 9 && <ListItem>9. {feature9}</ListItem>}
+                        {numberOfFeatures >= 10 && <ListItem>10. {feature10}</ListItem>}
+                        {numberOfFeatures >= 11 && <ListItem>11. {feature11}</ListItem>}
+                        {numberOfFeatures === 12 && <ListItem>12. {feature12}</ListItem>}
+                    </List>
+                    {/* <Spacer /> */}
+                    <Stack pb={5}>
+                        <CustomSolidButton hoverColor={goldPlan && "#ffff"} textColor={goldPlan ? "#EB4C15" : "white"} buttonColor={!goldPlan ? primaryColor : "#F7F7F7"} buttonText={"Choose plan"} />
+                    </Stack>
                 </Stack>
-            </Stack>
+            } />
         </Box >
     )
 }
