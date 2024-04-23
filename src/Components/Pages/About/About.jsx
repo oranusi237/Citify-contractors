@@ -1,4 +1,4 @@
-import { Box, Center, Divider, Flex, Heading, List, ListIcon, ListItem, Spacer, Stack, Text } from "@chakra-ui/react";
+import { Box, Center, Divider, Flex, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
 import ServiceImage from "../../Assets/customer-service.jpg";
 import StatsBgImage from "../../Assets/handshake.jpg"
 import ServicesCard from "./ServicesCard";
@@ -11,7 +11,8 @@ import { BsEye } from "react-icons/bs";
 import { FaPeopleCarryBox } from "react-icons/fa6";
 import { CgMediaPodcast } from "react-icons/cg";
 import { MdBusinessCenter, MdEventRepeat } from "react-icons/md";
-import { FaChalkboardTeacher, FaCheckCircle } from "react-icons/fa";
+import { FaChalkboardTeacher } from "react-icons/fa";
+import TimeLineComponent from "../../Reuseables/Timeline";
 
 
 export default function AboutPage() {
@@ -98,81 +99,18 @@ export default function AboutPage() {
 
 
 
+
+
             {/* why choose us  */}
             <Box padding={10} bg="#F7F7F7">
-                <Stack bg="">
+                <Stack>
                     <Stack>
-                        <Heading>Financial Projections</Heading>
-                        <Divider border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
+                        <Heading textAlign={"center"}>Financial Projections</Heading>
+                        <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
                     </Stack>
-                    <Flex mt={10} gap="30px" wrap="wrap">
-                        <Stack>
-                            <Heading>Start-Up Costs</Heading>
-                            <List ml={2}>
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    Rent: 2 million Naira
-                                </ListItem>
-
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    Car: 3 million Naira
-                                </ListItem>
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    Office Fitting: 1.5 million Naira
-                                </ListItem>
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    Operational Costs: 1.5 million Naira
-                                </ListItem>
-                            </List>
-                        </Stack>
-
-                        <Stack>
-                            <Heading>Source of Finance</Heading>
-                            <List ml={2}>
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    Personal Funds: 4 million Naira
-                                </ListItem>
-
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    Investors: 2 million Naira
-                                </ListItem>
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    Grants and Loans: 2 million Naira
-                                </ListItem>
-                            </List>
-                        </Stack>
-
-                        <Stack>
-                            <Heading>Revenue Model</Heading>
-                            <List ml={2}>
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    10% service charge on the total sale value for each property sold for partnering real estate firms
-                                </ListItem>
-
-                                <ListItem>
-                                    <ListIcon fontSize="20px" as={FaCheckCircle} />
-                                    2% service charge from individual clients for documentation, search, and verification of property.
-                                </ListItem>
-                            </List>
-                        </Stack>
-
-                        {/* <WhyChooseUsCard cardIcon={GrValidate} cardHeading={"Partnership Development"} description="At City Contractors, integrity guides our actions. We uphold honesty and transparency in all dealings, building trust with our clients through ethical practices and clear communication" />
-
-                        <WhyChooseUsCard cardIcon={BiSupport} cardHeading={"Client-Centric Approach"} description="Develop a client referral program to encourage satisfied clients to refer others, fostering a positive word-of-mouth reputation." />
-
-                        <WhyChooseUsCard cardIcon={ImPower} cardHeading={"Digital Presence"} description="Leverage social media, SEO, and online advertising to enhance brand visibility and attract potential clients." />
-
-                        <WhyChooseUsCard cardIcon={GrDocumentPerformance} cardHeading={"Event Marketing"} description="Participate in industry events, host seminars, and engage in community activities to build brand awareness." />
-
-                        <WhyChooseUsCard cardIcon={BiSupport} cardHeading={"Educational Content"} description="Create and share informative content about the real estate market, establishing Citify Contractors as a knowledge leader" /> */}
-                    </Flex>
+                    <Stack mt={10}>
+                        <TimeLineComponent />
+                    </Stack>
                 </Stack>
             </Box>
 
@@ -182,9 +120,10 @@ export default function AboutPage() {
                 <Heading textAlign="center">Our Team</Heading>
                 <Text fontWeight={600} textAlign="center">Meet the dynamic individuals driving Citify Contractors to success:</Text>
                 <Flex justify="center" gap={10} wrap="wrap">
-                    <ProfileCard personName="John Doe" personPosition={"CEO"} />
-                    <ProfileCard personName="John Doe" personPosition={"CEO"} />
-                    <ProfileCard personName="John Doe" personPosition={"CEO"} />
+                    <ProfileCard personName="Founder Name" personPosition={"Founder/CEO"} />
+                    <ProfileCard personName="Director Name" personPosition={"Director Of Marketing"} />
+                    <ProfileCard personName="HOP Name" personPosition={"Head Of Operations"} />
+                    <ProfileCard personName="Finance Manager name" personPosition={"Finance Manager"} />
                 </Flex>
             </Stack>
 
