@@ -8,6 +8,8 @@ import LoginPage from './Components/Pages/Auth/SignIn/Login';
 import NavIndex from './Components/NavigationBars';
 import PageNotFound from "./Components/Pages/NotFound";
 import Footer from "./Components/Reuseables/Sections/Footer";
+import RequireAuth from "./Components/Utils/RequireAuth";
+import CheckoutPage from "./Components/Pages/Checkout/Checkout";
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path="login" element={<LoginPage />} />
         <Route path="sign-up" element={<SignUpPage />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/checkout" element={<RequireAuth childComponent={<CheckoutPage />} />} />
       </Routes>
       <Footer />
     </BrowserRouter>
