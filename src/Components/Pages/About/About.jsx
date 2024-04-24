@@ -1,7 +1,6 @@
 import { Box, Center, Divider, Flex, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
 import StatsBgImage from "../../Assets/handshake.jpg"
 import StatisticsCard from "./StatsCard";
-import PricingCard from "../../Reuseables/Cards/PricingCard";
 import { primaryColor } from "../../Reuseables/colors";
 import ProfileCard from "../../Reuseables/Cards/ProfileCard";
 import { TbTarget } from "react-icons/tb";
@@ -12,10 +11,6 @@ import "../../AnimationContainers/styles.css"
 
 
 export default function AboutPage() {
-
-    function formatCurrency(amount) {
-        return new Intl.NumberFormat().format(amount)
-    }
 
     return (
         <Box>
@@ -69,23 +64,19 @@ export default function AboutPage() {
             </Stack>
             <Spacer height={100} />
 
-            {/* packages section color="EB4C15"  */}
-            <section>
-                <FadeInAnimationContainer children={
-                    <Box>
-                        <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"25px"}>Pricing</Heading>
-                        <Heading color={"#031B23"} fontWeight={500} fontSize="23px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
-                        <Spacer height={10} />
-                        <Flex justify="center" wrap="wrap" gap={10} >
-                            <PricingCard numberOfFeatures={8} planName={"Basic Plan"} planPriceNGN={formatCurrency(1200000)} planPriceUSD={formatCurrency(1000)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"Cars"} feature3={"Card board walls and Roofing sheets"} feature4={"Local Tress and Shrubs"} feature5={"4mm Glass Box Casing "} feature6={"Delivery"} feature7={"Normal Table"} feature8={"Normal exhibition stand"} />
-
-                            <PricingCard numberOfFeatures={10} planName={"Premium Plan"} planPriceNGN={formatCurrency(1500000)} planPriceUSD={formatCurrency(1200)} planDuration={"Yearly Plan"} feature1={"Scale 1:100 "} feature2={"Interior  lights or Exterior lights"} feature3={"Cars"} feature4={"Card board made Corrugated Roofing sheets"} feature5={"Normal Tress and Shrubs"} feature6={"4mm Glass Box Casing"} feature7={"Model Table Stand"} feature8={"Delivery"} feature9={"Standard Table Stand"} feature10={"Standard exhibition stand"} />
-
-                            <PricingCard numberOfFeatures={12} planName={"Gold Plan"} planPriceNGN={formatCurrency(2000000)} planPriceUSD={formatCurrency(1600)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"0.2cm thick form board for walls"} feature3={"Exterior and Interior Lights"} feature4={"Human figures"} feature5={"Live lighted Cars"} feature6={"3D Corrugated Plastic Roofing sheets"} feature7={"Foreign Tress and Shrubs"} feature8={"4mm Glass Box Casing"} feature9={"Customised Model Table Stand"} feature10={"Delivery"} feature11={"Fully Customized Table Stand"} feature12={"Fully customized Exhibition stand "} />
-                        </Flex>
-                    </Box>
-                } />
-            </section>
+            {/*Profile section is available */}
+            <FadeInAnimationContainer children={
+                <Stack my={20}>
+                    <Heading textAlign="center">Our Team</Heading>
+                    <Text fontWeight={600} textAlign="center">Meet the dynamic individuals driving Citify Contractors to success:</Text>
+                    <Flex justify="center" gap={10} wrap="wrap">
+                        <ProfileCard personName="Founder Name" personPosition={"Founder/CEO"} />
+                        <ProfileCard personName="Director Name" personPosition={"Director Of Marketing"} />
+                        <ProfileCard personName="HOP Name" personPosition={"Head Of Operations"} />
+                        <ProfileCard personName="Finance Manager name" personPosition={"Finance Manager"} />
+                    </Flex>
+                </Stack>
+            } />
 
             <Spacer height={100} />
 
@@ -101,21 +92,6 @@ export default function AboutPage() {
                     </Stack>
                 </Stack>
             </Box>
-
-
-            {/*Profile section is available */}
-            <FadeInAnimationContainer children={
-                <Stack my={20}>
-                    <Heading textAlign="center">Our Team</Heading>
-                    <Text fontWeight={600} textAlign="center">Meet the dynamic individuals driving Citify Contractors to success:</Text>
-                    <Flex justify="center" gap={10} wrap="wrap">
-                        <ProfileCard personName="Founder Name" personPosition={"Founder/CEO"} />
-                        <ProfileCard personName="Director Name" personPosition={"Director Of Marketing"} />
-                        <ProfileCard personName="HOP Name" personPosition={"Head Of Operations"} />
-                        <ProfileCard personName="Finance Manager name" personPosition={"Finance Manager"} />
-                    </Flex>
-                </Stack>
-            } />
 
             {/* Statistics section */}
             <FadeInAnimationContainer children={
