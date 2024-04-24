@@ -1,9 +1,10 @@
-import { Box, Drawer, DrawerBody, useDisclosure, DrawerOverlay, DrawerContent, DrawerCloseButton, Spacer, Heading, Stack } from "@chakra-ui/react";
+import { Box, Drawer, DrawerBody, useDisclosure, DrawerOverlay, DrawerContent, DrawerCloseButton, Spacer, Stack, Image } from "@chakra-ui/react";
 import NavItemsRenderers from "./NavItemsRenderers";
 import { MdOutlineMenu } from "react-icons/md";
 import { useRef } from "react";
 import NavContainer from "./NavContainer";
 import { Link } from "react-router-dom";
+import Logo from "../Assets/Images/logo.png"
 
 
 export default function MobileNav() {
@@ -15,7 +16,7 @@ export default function MobileNav() {
         <Box>
             <NavContainer children={
                 <>
-                    <Link to="/"><Heading>Home</Heading></Link>
+                    <Link to="/"><Image width="100px" src={Logo} alt="logo" /></Link>
                     <Spacer />
                     <MdOutlineMenu color="whitesmoke" cursor="pointer" refX={btnRef} fontSize={50} onClick={onOpen} />
                     <Drawer
