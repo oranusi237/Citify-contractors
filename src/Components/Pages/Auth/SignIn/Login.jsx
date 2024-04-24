@@ -93,7 +93,7 @@ export default function LoginPage() {
                         <FormErrorMessage>{errors.password}</FormErrorMessage>
                     </FormControl>
 
-                    <Button _hover={{ background: "#C70000" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Login</Button>
+                    <Button _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Login</Button>
                     <Text textAlign="center">Don't have an account? Sign up <Link style={{color:  primaryColor}} to="/sign-up">here</Link></Text>
                 </Stack>
             </form>
