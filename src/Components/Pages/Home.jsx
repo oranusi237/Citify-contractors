@@ -1,3 +1,4 @@
+
 import { Box, Heading, Text, Stack, Center, Accordion, AccordionItem, AccordionPanel, AccordionButton, AccordionIcon, Button, Flex, Spacer, } from "@chakra-ui/react";
 import Bg from "../Assets/Images/pexel1.jpg"
 import Bg1 from "../Assets/Images/pexels-icsa-833425-1709003.jpg"
@@ -23,7 +24,7 @@ export default function Homepage() {
 
   return (
     <Box>
-      <HeroSection buttonText={"Find out more"} backgroundImage={Bg} headingText={"Business"} heroDescription="We help you achieve your goals" />
+      <HeroSection buttonText={"Find out more"} backgroundImage={Bg} headingText={"Citify Contractors"} heroDescription="We help you achieve your goals" />
 
       <Box mt={5} >
         <Stack align="center" direction={{ base: 'column', md: 'row' }}>
@@ -53,9 +54,9 @@ export default function Homepage() {
           <Flex gap={10}>
             <ServicesCard serviceName={"Real estate management"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
 
-            <ServicesCard serviceName={"Real estate management"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
+            <ServicesCard serviceName={"Branding"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
 
-            <ServicesCard serviceName={"Real estate management"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
+            <ServicesCard serviceName={"Marketing"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
           </Flex>
         </Center>
       </Box>
@@ -109,9 +110,9 @@ export default function Homepage() {
         <Center flexDirection="column" lineHeight={10}>
           <Text>Get Started</Text>
           <Heading >Ready to get started?</Heading>
-          <Button mt={5}>
-            <a href="/Contact">Contact Us</a>
-          </Button>
+          <Link to="/contact">
+          <Button mt={5}>Contact Us</Button>
+          </Link>
         </Center>
       </Box>
     </Box >
