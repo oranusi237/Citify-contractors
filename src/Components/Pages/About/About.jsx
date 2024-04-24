@@ -5,9 +5,10 @@ import { primaryColor } from "../../Reuseables/colors";
 import ProfileCard from "../../Reuseables/Cards/ProfileCard";
 import { TbTarget } from "react-icons/tb";
 import { BsEye } from "react-icons/bs";
-import TimeLineComponent, { TimeLineComponentSecond } from "../../Reuseables/Timeline";
+import { TimeLineComponentSecond } from "../../Reuseables/Timeline";
 import FadeInAnimationContainer from "../../AnimationContainers/FadeIn";
 import "../../AnimationContainers/styles.css"
+import ServiceSection from "../../Reuseables/Sections/Ourservices";
 
 
 export default function AboutPage() {
@@ -24,7 +25,7 @@ export default function AboutPage() {
                 </Stack>
             </Center>
 
-            <Spacer height={"80px"} />
+            <Spacer height={100} />
 
             {/* Mission and vission statement */}
             <Box >
@@ -50,11 +51,21 @@ export default function AboutPage() {
             </Box>
 
             <Spacer height={100} />
+            <Stack>
+                <Stack>
+                    <Heading textAlign={"center"}>Our Services</Heading>
+                    <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
+                </Stack>
+                <ServiceSection />
+            </Stack>
+
+            <Spacer height={100} />
+
 
             {/* services section  */}
             <Stack id="services" align="center" justify="center">
                 <Box borderRadius={8} width={"90vw"} bg="#F7F7F7" padding={10}>
-                    <Heading textAlign="center">Detailed Marketing Strategy</Heading>
+                    <Heading textAlign="center">Marketing Strategy</Heading>
                     <Text textAlign="center">Our marketing strategy is based on a comprehensive understanding of our target audience and their needs.</Text>
                     <Stack>
                         <TimeLineComponentSecond />
@@ -81,7 +92,7 @@ export default function AboutPage() {
             <Spacer height={100} />
 
             {/* why choose us  */}
-            <Box padding={10} bg="#F7F7F7">
+            {/* <Box padding={10} bg="#F7F7F7">
                 <Stack>
                     <Stack>
                         <Heading textAlign={"center"}>Financial Projections</Heading>
@@ -91,7 +102,7 @@ export default function AboutPage() {
                         <TimeLineComponent />
                     </Stack>
                 </Stack>
-            </Box>
+            </Box> */}
 
             {/* Statistics section */}
             <FadeInAnimationContainer children={
