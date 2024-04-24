@@ -22,7 +22,6 @@ export default function PricingCard({ planName, numberOfFeatures, planDuration, 
     //     getrates()
     // }, [])
 
-    const goldPlan = typeof (planName) === "string" && planName.toString().toLowerCase().includes("gold")
 
     return (
         <Box>
