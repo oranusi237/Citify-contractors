@@ -1,7 +1,8 @@
-import { Box, Card, CardBody, CardFooter, Image, Heading, Text, Flex } from "@chakra-ui/react";
+import { Box, Card, CardBody, CardFooter, Image, Heading, Text, Flex, Tooltip } from "@chakra-ui/react";
 import userImage from "../../Assets/dummy-user-image.jpg"
 import { Link } from "react-router-dom";
 import { FaFacebook, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { primaryColor } from "../colors";
 
 
 export default function ProfileCard({ personName, personPosition, facebookLink, twitterLink, linkedInLink }) {
@@ -15,15 +16,23 @@ export default function ProfileCard({ personName, personPosition, facebookLink, 
                 </CardBody>
                 <CardFooter>
                     <Flex gap={5}>
-                        <Link to={facebookLink}>
-                            <FaFacebook />
-                        </Link>
-                        <Link to={twitterLink}>
-                            <FaTwitter />
-                        </Link>
-                        <Link to={linkedInLink}>
-                            <FaLinkedin />
-                        </Link>
+                        <Tooltip label="Follow on Facebook">
+                            <Link to={facebookLink}>
+                                <FaFacebook fontSize={20} color={primaryColor} />
+                            </Link>
+                        </Tooltip>
+
+                        <Tooltip label="Follow on twitter">
+                            <Link to={twitterLink}>
+                                <FaTwitter fontSize={20} color={primaryColor} />
+                            </Link>
+                        </Tooltip>
+
+                        <Tooltip label="Follow on linkedin">
+                            <Link to={linkedInLink}>
+                                <FaLinkedin fontSize={20} color={primaryColor} />
+                            </Link>
+                        </Tooltip>
                     </Flex>
                 </CardFooter>
             </Card>
