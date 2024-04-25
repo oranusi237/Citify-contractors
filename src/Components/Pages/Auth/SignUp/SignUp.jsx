@@ -2,8 +2,10 @@ import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, F
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { RegisterNewUser } from "../../../Utils/Firebase/Firebase";
 
 export default function SignUpPage() {
+
     const regValues = {
         firstName: "",
         lastName: "",
@@ -13,11 +15,17 @@ export default function SignUpPage() {
         confirmedPassword: ""
     }
 
-
     const [errors, setErrors] = useState(regValues);
+    const [isloading, setIsLoading] = useState(false)
 
-
-    const [regInfo, setRegInfo] = useState(regValues)
+    const [regInfo, setRegInfo] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
+        confirmedPassword: ""
+    })
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -71,11 +79,12 @@ export default function SignUpPage() {
 
     function handleSubmit(e) {
         e.preventDefault();
-
         const newErrors = {};
 
         // Validate each field
         Object.entries(regInfo).forEach(([key, value]) => {
+            setIsLoading(true)
+
             let error = '';
 
             switch (key) {
@@ -103,18 +112,51 @@ export default function SignUpPage() {
 
             if (error) {
                 newErrors[key] = error;
+                setIsLoading(false)
             }
         });
 
         // If there are validation errors, set the errors and stop form submission
         if (Object.keys(newErrors).length > 0 || regInfo.password !== regInfo.confirmedPassword) {
             setErrors(newErrors);
+            setIsLoading(false)
             return;
         }
 
+        try {
+            RegisterNewUser
+                (
+                    {
+                        email: regInfo.email,
+                        firstName: regInfo.firstName, lastName: regInfo.lastName,
+                        password: regInfo.password, phoneNumber: regInfo.phoneNumber
+                    }
+                )
+        } catch (error) {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.error("Error registering user:", errorCode, errorMessage);
+        } finally {
+            setIsLoading(false)
+        }
+
         // If there are no validation errors, continue with form submission logic
-        console.log("Form submitted successfully");
+        console.log("Form submitted successfullyyyyyy");
     }
+
+    // SignUpPage.js
+
+    // ... (existing code)
+
+    // function handleSubmit(e) {
+    //     e.preventDefault();
+
+    //     // Your existing validation logic
+
+    //     // If there are no validation errors, continue with user registration
+    //     if (Object.keys(newErrors).length === 0 && regInfo.password === regInfo.confirmedPassword) {
+
+    // }
 
 
     return (
@@ -159,7 +201,7 @@ export default function SignUpPage() {
                         <FormErrorMessage>{errors.confirmedPassword}</FormErrorMessage>
                     </FormControl>
 
-                    <Button _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Sign up</Button>
+                    <Button isLoading={isloading} _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Sign up</Button>
                     <Text textAlign="center">Already have an account? Login <Link style={{ color: primaryColor }} to="/login">here</Link></Text>
 
                 </Stack>
