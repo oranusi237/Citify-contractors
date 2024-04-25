@@ -33,7 +33,7 @@ export default function AboutPage() {
 
             {/* Mission and vission statement */}
             <Box >
-                <Heading mb={5} textAlign="center">Our <span style={{ color: primaryColor }}>mission</span> and <span style={{ color: primaryColor }}>vision</span></Heading>
+                <Heading mb={5} textAlign="center">Our <span style={{ color: primaryColor }}>Mission</span> and <span style={{ color: primaryColor }}>Vision</span></Heading>
                 <Flex pt={10} gap={20} wrap={"wrap"} justify="center" align="center">
 
                     <FadeInAnimationContainer children={
