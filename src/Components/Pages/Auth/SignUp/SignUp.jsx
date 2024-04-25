@@ -159,7 +159,7 @@ export default function SignUpPage() {
                         <FormErrorMessage>{errors.confirmedPassword}</FormErrorMessage>
                     </FormControl>
 
-                    <Button _hover={{ background: "#C70000" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Sign up</Button>
+                    <Button _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Sign up</Button>
                     <Text textAlign="center">Already have an account? Login <Link style={{ color: primaryColor }} to="/login">here</Link></Text>
 
                 </Stack>

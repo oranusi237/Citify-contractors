@@ -22,18 +22,17 @@ export default function PricingCard({ planName, numberOfFeatures, planDuration, 
     //     getrates()
     // }, [])
 
-    const goldPlan = typeof (planName) === "string" && planName.toString().toLowerCase().includes("gold")
 
     return (
         <Box>
             <HoverAnimationContainer children={
-                <Stack boxSizing="border-box" margin textAlign="center" borderRadius={10} padding="15px" height="max-content" background={goldPlan ? "#EB4C15" : "white"}
-                    boxShadow={goldPlan ? "" : "0px 0px 12px 13px rgba(226,226,226,0.54)"} width="300px" >
-                    <Heading color={goldPlan ? "whitesmoke" : primaryColor}>{planName}</Heading>
+                <Stack boxSizing="border-box" margin textAlign="center" borderRadius={10} padding="15px" height="max-content" background={"white"}
+                    boxShadow={"0px 0px 12px 13px rgba(226,226,226,0.54)"} width="300px" >
+                    <Heading color={primaryColor}>{planName}</Heading>
                     <Text fontWeight={600} color={"black"}>{planDuration}</Text>
-                    <Heading color={goldPlan ? "whitesmoke" : primaryColor}>₦{planPriceNGN}</Heading>
-                    <Heading color={goldPlan ? "whitesmoke" : primaryColor}>(${planPriceUSD})</Heading>
-                    <List color={goldPlan ? "whitesmoke" : "black"}>
+                    <Heading color={primaryColor}>₦{planPriceNGN}</Heading>
+                    <Heading color={primaryColor}>(${planPriceUSD})</Heading>
+                    <List color={"black"}>
                         <ListItem>1. {feature1}</ListItem>
                         <ListItem>2. {feature2}</ListItem>
                         <ListItem>3. {feature3}</ListItem>
@@ -49,7 +48,7 @@ export default function PricingCard({ planName, numberOfFeatures, planDuration, 
                     </List>
                     {/* <Spacer /> */}
                     <Stack pb={5}>
-                        <CustomSolidButton hoverColor={goldPlan && "#ffff"} textColor={goldPlan ? "#EB4C15" : "white"} buttonColor={!goldPlan ? primaryColor : "#F7F7F7"} buttonText={"Choose plan"} />
+                        <CustomSolidButton  buttonText={"Choose plan"} />
                     </Stack>
                 </Stack>
             } />

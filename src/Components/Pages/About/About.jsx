@@ -1,21 +1,17 @@
 import { Box, Center, Divider, Flex, Heading, Spacer, Stack, Text } from "@chakra-ui/react";
 import StatsBgImage from "../../Assets/handshake.jpg"
 import StatisticsCard from "./StatsCard";
-import PricingCard from "../../Reuseables/Cards/PricingCard";
 import { primaryColor } from "../../Reuseables/colors";
 import ProfileCard from "../../Reuseables/Cards/ProfileCard";
 import { TbTarget } from "react-icons/tb";
 import { BsEye } from "react-icons/bs";
-import TimeLineComponent, { TimeLineComponentSecond } from "../../Reuseables/Timeline";
+import { TimeLineComponentSecond } from "../../Reuseables/Timeline";
 import FadeInAnimationContainer from "../../AnimationContainers/FadeIn";
 import "../../AnimationContainers/styles.css"
+import ServiceSection from "../../Reuseables/Sections/Ourservices";
 
 
 export default function AboutPage() {
-
-    function formatCurrency(amount) {
-        return new Intl.NumberFormat().format(amount)
-    }
 
     return (
         <Box>
@@ -29,7 +25,7 @@ export default function AboutPage() {
                 </Stack>
             </Center>
 
-            <Spacer height={"80px"} />
+            <Spacer height={100} />
 
             {/* Mission and vission statement */}
             <Box >
@@ -55,11 +51,21 @@ export default function AboutPage() {
             </Box>
 
             <Spacer height={100} />
+            <Stack>
+                <Stack>
+                    <Heading textAlign={"center"}>Our Services</Heading>
+                    <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
+                </Stack>
+                <ServiceSection />
+            </Stack>
+
+            <Spacer height={100} />
+
 
             {/* services section  */}
             <Stack id="services" align="center" justify="center">
                 <Box borderRadius={8} width={"90vw"} bg="#F7F7F7" padding={10}>
-                    <Heading textAlign="center">Detailed Marketing Strategy</Heading>
+                    <Heading textAlign="center">Marketing Strategy</Heading>
                     <Text textAlign="center">Our marketing strategy is based on a comprehensive understanding of our target audience and their needs.</Text>
                     <Stack>
                         <TimeLineComponentSecond />
@@ -68,40 +74,6 @@ export default function AboutPage() {
                 </Box>
             </Stack>
             <Spacer height={100} />
-
-            {/* packages section color="EB4C15"  */}
-            <section>
-                <FadeInAnimationContainer children={
-                    <Box>
-                        <Heading mb={2} textAlign="center" color={primaryColor} fontSize={"25px"}>Pricing</Heading>
-                        <Heading color={"#031B23"} fontWeight={500} fontSize="23px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
-                        <Spacer height={10} />
-                        <Flex justify="center" wrap="wrap" gap={10} >
-                            <PricingCard numberOfFeatures={8} planName={"Basic Plan"} planPriceNGN={formatCurrency(1200000)} planPriceUSD={formatCurrency(1000)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"Cars"} feature3={"Card board walls and Roofing sheets"} feature4={"Local Tress and Shrubs"} feature5={"4mm Glass Box Casing "} feature6={"Delivery"} feature7={"Normal Table"} feature8={"Normal exhibition stand"} />
-
-                            <PricingCard numberOfFeatures={10} planName={"Premium Plan"} planPriceNGN={formatCurrency(1500000)} planPriceUSD={formatCurrency(1200)} planDuration={"Yearly Plan"} feature1={"Scale 1:100 "} feature2={"Interior  lights or Exterior lights"} feature3={"Cars"} feature4={"Card board made Corrugated Roofing sheets"} feature5={"Normal Tress and Shrubs"} feature6={"4mm Glass Box Casing"} feature7={"Model Table Stand"} feature8={"Delivery"} feature9={"Standard Table Stand"} feature10={"Standard exhibition stand"} />
-
-                            <PricingCard numberOfFeatures={12} planName={"Gold Plan"} planPriceNGN={formatCurrency(2000000)} planPriceUSD={formatCurrency(1600)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"0.2cm thick form board for walls"} feature3={"Exterior and Interior Lights"} feature4={"Human figures"} feature5={"Live lighted Cars"} feature6={"3D Corrugated Plastic Roofing sheets"} feature7={"Foreign Tress and Shrubs"} feature8={"4mm Glass Box Casing"} feature9={"Customised Model Table Stand"} feature10={"Delivery"} feature11={"Fully Customized Table Stand"} feature12={"Fully customized Exhibition stand "} />
-                        </Flex>
-                    </Box>
-                } />
-            </section>
-
-            <Spacer height={100} />
-
-            {/* why choose us  */}
-            <Box padding={10} bg="#F7F7F7">
-                <Stack>
-                    <Stack>
-                        <Heading textAlign={"center"}>Financial Projections</Heading>
-                        <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
-                    </Stack>
-                    <Stack mt={10}>
-                        <TimeLineComponent />
-                    </Stack>
-                </Stack>
-            </Box>
-
 
             {/*Profile section is available */}
             <FadeInAnimationContainer children={
@@ -116,6 +88,21 @@ export default function AboutPage() {
                     </Flex>
                 </Stack>
             } />
+
+            <Spacer height={100} />
+
+            {/* why choose us  */}
+            {/* <Box padding={10} bg="#F7F7F7">
+                <Stack>
+                    <Stack>
+                        <Heading textAlign={"center"}>Financial Projections</Heading>
+                        <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
+                    </Stack>
+                    <Stack mt={10}>
+                        <TimeLineComponent />
+                    </Stack>
+                </Stack>
+            </Box> */}
 
             {/* Statistics section */}
             <FadeInAnimationContainer children={

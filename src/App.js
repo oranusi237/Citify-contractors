@@ -10,6 +10,7 @@ import PageNotFound from "./Components/Pages/NotFound";
 import Footer from "./Components/Reuseables/Sections/Footer";
 import RequireAuth from "./Components/Utils/RequireAuth";
 import CheckoutPage from "./Components/Pages/Checkout/Checkout";
+import PricingPage from "./Components/Pages/Pricing/Pricing";
 
 function App() {
   return (
@@ -19,10 +20,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="sign-up" element={<SignUpPage />} />
-        <Route path="*" element={<PageNotFound />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/checkout" element={<RequireAuth childComponent={<CheckoutPage />} />} />
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
