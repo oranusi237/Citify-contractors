@@ -1,77 +1,65 @@
-import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, Heading, Text } from "@chakra-ui/react";
+import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, Heading, Text, useToast } from "@chakra-ui/react";
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useUserAuth } from "../../../Store/UserContext";
+import { browserLocalPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 
 export default function LoginPage() {
 
-    const regValues = {
+    const auth = getAuth()
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState({ email: "", password: "" });
+    const [loginInfo, setLoginInfo] = useState({
         email: "",
-        password: "",
-    }
+        password: ""
+    })
 
+    const toast = useToast()
 
-    const [errors, setErrors] = useState(regValues);
+    const { setUser } = useUserAuth()
+    const { setIsAuthenticated } = useUserAuth()
 
-
-    const [regInfo, setRegInfo] = useState(regValues)
+    const navigate = useNavigate()
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setRegInfo((prevValue) => ({ ...prevValue, [name]: value }));
-        setErrors((prevError) => ({ ...prevError, [name]: errors.name }));
+        setLoginInfo((prevValue) => ({ ...prevValue, [name]: value }));
+        setError((prevError) => ({ ...prevError, [name]: "" }))
     }
-
-    const validateEmail = (value) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!value || !emailRegex.test(value)) {
-            return 'Please enter a valid email address!';
-        }
-        return '';
-    };
-
-    const validatePassword = (value) => {
-        if (value.length < 8) {
-            return "Password must have a minimum of 8 Characters"
-        }
-        return "";
-    };
-
 
 
     function handleSubmit(e) {
         e.preventDefault();
 
-        const newErrors = {};
-
-        // Validate each field
-        Object.entries(regInfo).forEach(([key, value]) => {
-            let error = '';
-
-            switch (key) {
-                case 'email':
-                    error = validateEmail(value);
-                    break;
-                case 'password':
-                    error = validatePassword(value);
-                    break;
-                default:
-                    break;
+        try {
+            async function LoginAuthUserWithEmailAndPassword() {
+                setPersistence(auth, browserLocalPersistence)
+                setIsLoading(true)
+                console.log("Logging you in, hold on tight")
+                if (!loginInfo.email || !loginInfo.password) return;
+                return (
+                    await signInWithEmailAndPassword(auth, loginInfo.email, loginInfo.password).then((userCredential) => {
+                        setUser(userCredential.user)
+                        console.log("Your sign in was successful")
+                        setIsLoading(false)
+                        setIsAuthenticated(true)
+                        navigate("/")
+                    })
+                        .catch((error) => {
+                            setIsLoading(false)
+                            console.log(error.message)
+                            if (error.message === "Firebase: Error (auth/invalid-credential).") {
+                                setError({ email: "Incorrect email", password: "Incorrect passsword" })
+                                toast({ title: "Login failed", description: "Incorrect email or password", status: "error", position: "bottom", duration: 3000, })
+                            }
+                        })
+                )
             }
-
-            if (error) {
-                newErrors[key] = error;
-            }
-        });
-
-        // If there are validation errors, set the errors and stop form submission
-        if (Object.keys(newErrors).length > 0 || regInfo.password !== regInfo.confirmedPassword) {
-            setErrors(newErrors);
-            return;
+            LoginAuthUserWithEmailAndPassword()
+        } catch (error) {
+            console.log(error)
         }
-
-        // If there are no validation errors, continue with form submission logic
-        console.log("Form submitted successfully");
     }
 
 
@@ -81,20 +69,22 @@ export default function LoginPage() {
                 <Stack borderRadius={8} boxShadow={"0px 0px 12px 13px rgba(226,226,226,0.54)"} mt={"70px"} padding={"20px"} width={["90vw", "80vw", "500px"]}>
                     <Heading margin={"10px 0px"} textAlign={"center"} fontSize={"25px"}>Login to your account</Heading>
 
-                    <FormControl isInvalid={errors.email}>
+                    <FormControl isInvalid={error.email}>
                         <FormLabel>Email Address</FormLabel>
-                        <Input name="email" value={regInfo.email} onChange={handleChange} type="email" placeholder="Your email address" />
-                        <FormErrorMessage>{errors.email}</FormErrorMessage>
+                        <Input autoComplete="email" name="email" value={loginInfo.email} onChange={handleChange} type="email" placeholder="Your email address" />
+                        <FormErrorMessage>{error.email}</FormErrorMessage>
                     </FormControl>
 
-                    <FormControl isInvalid={errors.password}>
+                    <FormControl isInvalid={error.password}>
                         <FormLabel>Password</FormLabel>
-                        <Input name="password" value={regInfo.password} onChange={handleChange} type="password" placeholder="Enter your password" />
-                        <FormErrorMessage>{errors.password}</FormErrorMessage>
+                        <Input autoComplete="current-password" name="password" value={loginInfo.password} onChange={handleChange} type="password" placeholder="Enter your password" />
+                        <FormErrorMessage>{error.password}</FormErrorMessage>
                     </FormControl>
 
-                    <Button _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Login</Button>
-                    <Text textAlign="center">Don't have an account? Sign up <Link style={{color:  primaryColor}} to="/sign-up">here</Link></Text>
+                    {/* add a remeber me check button to make firebase auth state persistence */}
+
+                    <Button isLoading={isLoading} loadingText="Signing you in" _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Login</Button>
+                    <Text textAlign="center">Don't have an account? Sign up <Link style={{ color: primaryColor }} to="/sign-up">here</Link></Text>
                 </Stack>
             </form>
         </Flex >
