@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, FormHelperText, Heading, Text } from "@chakra-ui/react";
+import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, FormHelperText, Heading, Text, useToast } from "@chakra-ui/react";
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -15,8 +15,10 @@ export default function SignUpPage() {
         confirmedPassword: ""
     }
 
+    const toast = useToast()
+
     const [errors, setErrors] = useState(regValues);
-    const [isloading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
     const [regInfo, setRegInfo] = useState({
         firstName: "",
@@ -77,7 +79,8 @@ export default function SignUpPage() {
         return "";
     };
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
+        setIsLoading(true)
         e.preventDefault();
         const newErrors = {};
 
@@ -127,21 +130,24 @@ export default function SignUpPage() {
             RegisterNewUser
                 (
                     {
-                        email: regInfo.email,
+                        email: regInfo.email, toast: toast,
                         firstName: regInfo.firstName, lastName: regInfo.lastName,
                         password: regInfo.password, phoneNumber: regInfo.phoneNumber
                     }
                 )
+                setIsLoading(true)
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.error("Error registering user:", errorCode, errorMessage);
+            setIsLoading(false)
         } finally {
             setIsLoading(false)
         }
 
         // If there are no validation errors, continue with form submission logic
         console.log("Form submitted successfullyyyyyy");
+        setIsLoading(false)
     }
 
     // SignUpPage.js
@@ -201,7 +207,7 @@ export default function SignUpPage() {
                         <FormErrorMessage>{errors.confirmedPassword}</FormErrorMessage>
                     </FormControl>
 
-                    <Button isLoading={isloading} _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Sign up</Button>
+                    <Button isLoading={isLoading} loadingText="Creating new account" _hover={{ background: "#034C24" }} width={"full"} type="submit" fontWeight={900} color={"white"} bg={primaryColor} mt={5} alignSelf="center">Sign up</Button>
                     <Text textAlign="center">Already have an account? Login <Link style={{ color: primaryColor }} to="/login">here</Link></Text>
 
                 </Stack>
