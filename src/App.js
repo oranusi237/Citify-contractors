@@ -11,6 +11,7 @@ import Footer from "./Components/Reuseables/Sections/Footer";
 import RequireAuth from "./Components/Utils/RequireAuth";
 import CheckoutPage from "./Components/Pages/Checkout/Checkout";
 import PricingPage from "./Components/Pages/Pricing/Pricing";
+import ProfilePage from "./Components/Pages/Profile/Profile";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/profile" element={<RequireAuth childComponent={<ProfilePage />} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/pricing" element={<PricingPage />} />
         <Route path="/login" element={<LoginPage />} />
