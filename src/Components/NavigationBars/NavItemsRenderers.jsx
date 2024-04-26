@@ -7,9 +7,10 @@ import { useUserAuth } from "../Store/UserContext";
 export default function NavItemsRenderers({ direction, color, onClick }) {
     const { isAuthenticated, user } = useUserAuth()
     const filteredLink = navItems.filter((items) => items.name.toLowerCase() !== "login" && items.name.toLowerCase() !== "sign up")
+    const signedOutUserLink = navItems.filter((item) => item.name.toLowerCase() !== "profile")
     return (
         <Stack direction={direction} gap={5}>
-            {!user || user === null || !isAuthenticated ? navItems.map((item) => (
+            {!user || user === null || !isAuthenticated ? signedOutUserLink.map((item) => (
                 <NavLink onClick={onClick} className={({ isActive }) =>
                     isActive ? "active" : "in-active"
                 } key={item.id} to={item.path}>
@@ -28,7 +29,7 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
                         </Heading>
                     </NavLink>
                 ))}
-                {/* <Heading>{user!== null || user!== undefined ? user.email : ""}</Heading> */}
+            {/* <Heading>{user!== null || user!== undefined ? user.email : ""}</Heading> */}
         </Stack>
     );
 }
