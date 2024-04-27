@@ -12,8 +12,31 @@ import RequireAuth from "./Components/Utils/RequireAuth";
 import CheckoutPage from "./Components/Pages/Checkout/Checkout";
 import PricingPage from "./Components/Pages/Pricing/Pricing";
 import ProfilePage from "./Components/Pages/Profile/Profile";
+import { useEffect } from "react";
+import { setCurrentUser, setIsAuthenticated } from "./Components/Store/user/user-slice";
+import { useDispatch } from "react-redux";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "./Components/Utils/Firebase/Firebase";
+
 
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      if (firebaseUser) {
+        dispatch(setCurrentUser(firebaseUser));
+        setIsAuthenticated(true);
+      } else {
+        setCurrentUser(null);
+        setIsAuthenticated(false);
+      }
+    });
+
+    // Unsubscribe from the auth state listener when component unmounts
+    return () => unsubscribe();
+  },);
+
+
   return (
     <BrowserRouter>
       <NavIndex />
