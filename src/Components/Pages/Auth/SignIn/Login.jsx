@@ -2,11 +2,12 @@ import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, H
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useUserAuth } from "../../../Store/UserContext";
 import { browserLocalPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch, } from "react-redux";
+import { setCurrentUser, setIsAuthenticated } from "../../../Store/user/user-slice";
 
 export default function LoginPage() {
-
+    // const {is} = useSelector(selectCurrentUser)
     const auth = getAuth()
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState({ email: "", password: "" });
@@ -15,10 +16,10 @@ export default function LoginPage() {
         password: ""
     })
 
+    const dispatch = useDispatch()
+
     const toast = useToast()
 
-    const { setUser } = useUserAuth()
-    const { setIsAuthenticated } = useUserAuth()
 
     const navigate = useNavigate()
 
@@ -40,10 +41,12 @@ export default function LoginPage() {
                 if (!loginInfo.email || !loginInfo.password) return;
                 return (
                     await signInWithEmailAndPassword(auth, loginInfo.email, loginInfo.password).then((userCredential) => {
-                        setUser(userCredential.user)
+                        dispatch(setCurrentUser(userCredential.user))
+                        dispatch(setIsAuthenticated(true))
+                        // setUser(userCredential.user)
                         console.log("Your sign in was successful")
                         setIsLoading(false)
-                        setIsAuthenticated(true)
+                        // setIsAuthenticated(true)
                         navigate("/")
                     })
                         .catch((error) => {
