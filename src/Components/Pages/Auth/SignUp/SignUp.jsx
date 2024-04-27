@@ -1,8 +1,10 @@
-import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, FormHelperText, Heading, Text, useToast } from "@chakra-ui/react";
+import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, FormHelperText, Heading, Text, useToast, Switch, Textarea } from "@chakra-ui/react";
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { RegisterNewUser } from "../../../Utils/Firebase/Firebase";
+import {  auth, userRef } from "../../../Utils/Firebase/Firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { addDoc } from "firebase/firestore";
 
 export default function SignUpPage() {
 
@@ -16,7 +18,7 @@ export default function SignUpPage() {
     }
 
     const toast = useToast()
-
+    const [isCompany, setIsCompany] = useState(false)
     const [errors, setErrors] = useState(regValues);
     const [isLoading, setIsLoading] = useState(false)
 
@@ -26,8 +28,13 @@ export default function SignUpPage() {
         email: "",
         phoneNumber: "",
         password: "",
-        confirmedPassword: ""
+        confirmedPassword: "",
+        companyName: "",
+        companyDescription: "",
+        address: "",
     })
+
+
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -122,20 +129,48 @@ export default function SignUpPage() {
         // If there are validation errors, set the errors and stop form submission
         if (Object.keys(newErrors).length > 0 || regInfo.password !== regInfo.confirmedPassword) {
             setErrors(newErrors);
-            setIsLoading(false)
             return;
         }
 
         try {
-            RegisterNewUser
-                (
-                    {
-                        email: regInfo.email, toast: toast,
-                        firstName: regInfo.firstName, lastName: regInfo.lastName,
-                        password: regInfo.password, phoneNumber: regInfo.phoneNumber
-                    }
-                )
-                setIsLoading(true)
+            setIsLoading(true)
+            createUserWithEmailAndPassword(auth, regInfo.email, regInfo.password)
+                .then(async (userCredential) => {
+                    const userData = {
+                        firstName: regInfo.firstName,
+                        lastName: regInfo.lastName,
+                        email: regInfo.email,
+                        phoneNumber: regInfo.phoneNumber,
+                        address: regInfo.address,
+                        isCompany: isCompany,
+                        companyName: regInfo.companyName,
+                        companyDescription: regInfo.companyDescription,
+                        userID: userCredential.user.uid
+                    };
+                    console.log(userCredential)
+                    // Setting user data in Firestore after user creation
+                    await addDoc(userRef, userData)
+                    // setIsLoading(false)
+                })
+                .then(() => {
+                    console.log("New user has been created successfully");
+                    toast({ title: "Registration successful", description: "User account was created successfully", status: "success", position: "bottom", duration: 3000, })
+                    setIsLoading(false)
+                })
+                .catch((error) => {
+                    console.log("An error occurred: " + error.message);
+                    setIsLoading(false)
+                });
+            // RegisterNewUser
+            //     (
+            //         {
+            //             email: regInfo.email, toast: toast,
+            //             firstName: regInfo.firstName, lastName: regInfo.lastName,
+            //             password: regInfo.password, phoneNumber: regInfo.phoneNumber,
+
+            //         }
+            //     )
+            setIsLoading(true)
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -163,6 +198,10 @@ export default function SignUpPage() {
     //     if (Object.keys(newErrors).length === 0 && regInfo.password === regInfo.confirmedPassword) {
 
     // }
+
+    function handleToggle() {
+        setIsCompany(!isCompany)
+    }
 
 
     return (
@@ -194,6 +233,30 @@ export default function SignUpPage() {
                         <FormHelperText>Do not use international format(eg.+234)</FormHelperText>
                         <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
                     </FormControl>
+
+                    <FormControl>
+                        <FormLabel>{isCompany && "Company"} Address</FormLabel>
+                        <Input name="address" value={regInfo.address} onChange={handleChange} type="text" placeholder="default street, Abuja, Nigeria" />
+                        <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
+                    </FormControl>
+
+                    <FormControl my={5} display='flex' alignItems='center'>
+                        <FormLabel htmlFor='email-alerts' mb='0'>
+                            Sign up as a company?
+                        </FormLabel>
+                        <Switch id='email-alerts' onChange={handleToggle} />
+                    </FormControl>
+
+                    {isCompany && <FormControl>
+                        <FormLabel>Company Name</FormLabel>
+                        <Input name="companyName" value={regInfo.companyName} onChange={handleChange} type="text" placeholder="Your company name" />
+                        <FormErrorMessage>{errors.phoneNumber}</FormErrorMessage>
+
+                    </FormControl>}
+                    {isCompany && <FormControl>
+                        <FormLabel>Company Information</FormLabel>
+                        <Textarea name="companyDescription" value={regInfo.companyDescription} onChange={handleChange} type="text" placeholder="Your company description here" />
+                    </FormControl>}
 
                     <FormControl isInvalid={errors.password}>
                         <FormLabel>Password</FormLabel>
