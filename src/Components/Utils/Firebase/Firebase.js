@@ -18,13 +18,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-const fdb = getFirestore(app)
-const auth = getAuth()
+export const fdb = getFirestore(app)
+export const auth = getAuth(app)
 
-const userRef = collection(fdb, "Users")
+export const userRef = collection(fdb, "Users")
 
 
-export function RegisterNewUser({ email, toast, password, firstName, lastName, phoneNumber }) {
+export function RegisterNewUser({ email, toast, password, companyName, firstName, lastName, phoneNumber }) {
   createUserWithEmailAndPassword(auth, email, password)
       .then(async(userCredential)  =>  {
           const userData = {
@@ -52,61 +52,9 @@ export function RegisterNewUser({ email, toast, password, firstName, lastName, p
 
 
 
+export function GetCurrentUserId(){
+    const user = auth.currentUser.uid
+    return user;
+}
 
 
-// export const createUserDocumentFromAuth = async ({userAuth, firstName,lastName,phoneNumber,password}) => {
-//     const userDocRef = doc(db, 'users', userAuth.uid);
-  
-//     const userSnapshot = await getDoc(userDocRef);
-  
-//     if (!userSnapshot.exists()) {
-//       const { displayName, email } = userAuth;
-//       const createdAt = new Date();
-//       try {
-//         await setDoc(userDocRef, {
-//           displayName,
-//           email,
-//           createdAt,
-//           firstName,
-//           lastName, 
-//           phoneNumber,
-//           password
-//         });
-//       } catch (error) {
-//         console.log('error creating the user', error.message);
-//       }
-//     }
-//     return userDocRef;
-//   };
-
-
-
-//Implementing user session persistent
-
-// const auth = getAuth();
-// export function LoginEmailandPassword(){
-//   .then(({email, password}) => {
-//     return signInWithEmailAndPassword(auth, email, password);
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     console.log(errorCode)
-//     const errorMessage = error.message;
-//     console.log(errorMessage)
-//   });
-// }
-
-  
-//   export const createAuthUserWithEmailAndPassword = async (email, password) => {
-//     if (!email || !password) return;
-//     return await createUserWithEmailAndPassword(auth, email, password)
-//   }
-
-
-
-
-//   export const signOutUser = async () => await signOut(auth)
-  
-//   export const onAuthStateChangedListener = (callBack) => {
-//     onAuthStateChanged(auth, callBack)
-//   }
