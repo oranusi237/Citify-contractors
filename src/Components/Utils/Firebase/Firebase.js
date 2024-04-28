@@ -21,7 +21,7 @@ export const app = initializeApp(firebaseConfig);
 const db = getDatabase()
 const auth = getAuth()
 
-export function RegisterNewUser({email, password, firstName, lastName, displayName, phoneNumber}){
+export function RegisterNewUser({email, password, firstName ="", lastName ="-", displayName, phoneNumber}){
     createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     set(ref(db, "Users/" + userCredential.user.uid),{
