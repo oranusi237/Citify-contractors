@@ -13,12 +13,7 @@ export function useUserAuth() {
 }
 
 export default function UserAuthContextProvider({ children }) {
-    const [user, setUser] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phoneNumber: "",
-    });
+    const [user, setUser] = useState();
     const [isAuthenticated, setIsAuthenticated] = useState(false)
 
     const auth = getAuth();

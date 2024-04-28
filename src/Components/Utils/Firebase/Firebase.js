@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword,} from "firebase/auth";
-import { getDatabase, ref, set } from "firebase/database";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
@@ -18,10 +18,13 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-const db = getDatabase()
-const auth = getAuth()
+export const fdb = getFirestore(app)
+export const auth = getAuth(app)
 
-export function RegisterNewUser({email, password, firstName ="", lastName ="-", displayName, phoneNumber}){
+export const userRef = collection(fdb, "Users")
+
+
+export function RegisterNewUser({email, password, firstName, lastName, displayName, phoneNumber}){
     createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     set(ref(db, "Users/" + userCredential.user.uid),{

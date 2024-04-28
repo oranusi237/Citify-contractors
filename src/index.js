@@ -2,20 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Box, ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider } from '@chakra-ui/react';
 import App from './App';
-import UserAuthContextProvider from './Components/Store/UserContext';
+import { Provider } from 'react-redux';
+import { store } from './Components/Store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Box className='app'>
+    <Provider store={store}>
       <ChakraProvider>
-        <UserAuthContextProvider>
-          <App />
-        </UserAuthContextProvider>
+        <App />
       </ChakraProvider>
-    </Box>
+    </Provider>
   </React.StrictMode>
 );
 
