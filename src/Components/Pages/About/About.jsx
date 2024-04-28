@@ -51,18 +51,20 @@ export default function AboutPage() {
             </Box>
 
             <Spacer height={100} />
-            <Stack>
-                <Stack>
-                    <Heading textAlign={"center"}>Our Services</Heading>
-                    <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
+            {/* services section  */}
+            <Stack align="center">
+                <Stack width="80%">
+                    <Stack>
+                        <Heading textAlign={"center"}>Our Services</Heading>
+                        <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
+                    </Stack>
+                    <ServiceSection />
                 </Stack>
-                <ServiceSection />
             </Stack>
 
             <Spacer height={100} />
 
 
-            {/* services section  */}
             <Stack id="services" align="center" justify="center">
                 <Box borderRadius={8} width={"90vw"} bg="#F7F7F7" padding={10}>
                     <Heading textAlign="center">Marketing Strategy</Heading>
@@ -90,19 +92,6 @@ export default function AboutPage() {
             } />
 
             <Spacer height={100} />
-
-            {/* why choose us  */}
-            {/* <Box padding={10} bg="#F7F7F7">
-                <Stack>
-                    <Stack>
-                        <Heading textAlign={"center"}>Financial Projections</Heading>
-                        <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
-                    </Stack>
-                    <Stack mt={10}>
-                        <TimeLineComponent />
-                    </Stack>
-                </Stack>
-            </Box> */}
 
             {/* Statistics section */}
             <FadeInAnimationContainer children={
