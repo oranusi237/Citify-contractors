@@ -157,6 +157,9 @@ export default function SignUpPage() {
                     console.log("New user has been created successfully");
                     toast({ title: "Registration successful", description: "User account was created successfully", status: "success", position: "bottom", duration: 3000, })
                     setIsLoading(false)
+                    // Set logged-in state after successful registration
+            localStorage.setItem('loggedInUser', true); 
+            setIsLoading(true);
                 })
                 .catch((error) => {
                     console.log("An error occurred: " + error.message);
