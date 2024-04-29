@@ -1,4 +1,4 @@
-import { Route, Navigate, useAuthState } from 'react-router-dom';
+import { Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export default function ProtectedRoute(children, ...rest) {
