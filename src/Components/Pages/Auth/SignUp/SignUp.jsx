@@ -87,7 +87,7 @@ export default function SignUpPage() {
     };
 
     async function handleSubmit(e) {
-        setIsLoading(true)
+        setIsLoading(true);
         e.preventDefault();
         const newErrors = {};
 
@@ -129,6 +129,7 @@ export default function SignUpPage() {
         // If there are validation errors, set the errors and stop form submission
         if (Object.keys(newErrors).length > 0 || regInfo.password !== regInfo.confirmedPassword) {
             setErrors(newErrors);
+            setIsLoading(false);
             return;
         }
 

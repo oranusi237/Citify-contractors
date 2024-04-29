@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword,} from "firebase/auth";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { addDoc, collection, getFirestore, set, ref } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
@@ -24,22 +24,22 @@ export const auth = getAuth(app)
 export const userRef = collection(fdb, "Users")
 
 
-export function RegisterNewUser({email, password, firstName, lastName, displayName, phoneNumber}){
-    createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    set(ref(db, "Users/" + userCredential.user.uid),{
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-        phoneNumber: phoneNumber,
-    })
-}).then(()=>{
-  console.log("New user has been created succesfully")
-}).catch((error)=>{
-  console.log("An error occured:" + error.message)
-})
-}
+// export function RegisterNewUser({email, password, firstName, lastName, displayName, phoneNumber}){
+//     createUserWithEmailAndPassword(auth, email, password)
+//   .then((userCredential) => {
+//     set(ref(fdb, "Users/" + userCredential.user.uid),{
+//         firstName: firstName,
+//         lastName: lastName,
+//         email: email,
+//         password: password,
+//         phoneNumber: phoneNumber,
+//     })
+// }).then(()=>{
+//   console.log("New user has been created succesfully")
+// }).catch((error)=>{
+//   console.log("An error occured:" + error.message)
+// })
+// }
 
 
 

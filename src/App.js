@@ -17,6 +17,7 @@ import { setCurrentUser, setIsAuthenticated } from "./Components/Store/user/user
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Components/Utils/Firebase/Firebase";
+import ProtectedRoute from "./Components/Pages/Auth/ProtectedRoute";
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/checkout" element={<RequireAuth childComponent={<CheckoutPage />} />} />
         <Route path="*" element={<PageNotFound />} />
+        <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
       </Routes>
       <Footer />
     </BrowserRouter>
