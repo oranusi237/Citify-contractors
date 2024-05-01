@@ -2,10 +2,10 @@ import { Route, Navigate, useAuthState } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 export default function ProtectedRoute(children, ...rest) {
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // Manage authentication state
+    const [isLoggedIn, setIsLoggedIn] = useState(false); 
 
     useEffect(() => {
-      // Check for existing logged-in user (replace with your logic)
+      // Check for existing logged-in user 
       const user = localStorage.getItem('loggedInUser'); 
       setIsLoggedIn(!!user);
     }, []);

@@ -1,13 +1,11 @@
-
-import { Box, Heading, Text, Stack, Center, Accordion, AccordionItem, AccordionPanel, AccordionButton, AccordionIcon, Button, Flex, Spacer, } from "@chakra-ui/react";
+import { Box, Heading, Text, Stack, Center, Accordion, Divider, AccordionItem, AccordionPanel, AccordionButton, AccordionIcon, Button, Flex, Spacer, } from "@chakra-ui/react";
 import Bg from "../Assets/Images/pexel1.jpg"
 import Bg1 from "../Assets/Images/pexels-icsa-833425-1709003.jpg"
 import HeroSection from "../Reuseables/HeroSection";
 import CustomSolidButton from "../Reuseables/Solidbutton";
 import { Link } from "react-router-dom";
-import ServicesCard from "./About/ServicesCard";
-import { BsHouse } from "react-icons/bs";
 import { primaryColor } from "../Reuseables/colors";
+import ServiceSection from "../Reuseables/Sections/Ourservices";
 
 export default function Homepage() {
 
@@ -24,8 +22,9 @@ export default function Homepage() {
 
   return (
     <Box>
+      <Link to="/">
       <HeroSection buttonText={"Find out more"} backgroundImage={Bg} headingText={"Citify Contractors"} heroDescription="We help you achieve your goals" />
-
+      </Link>
       <Box mt={5} >
         <Stack align="center" direction={{ base: 'column', md: 'row' }}>
           <Box bgImage={Bg1} bgSize={"cover"} bgPosition={"center"} flex={1} height="500px" borderRadius="5px"></Box>
@@ -51,13 +50,9 @@ export default function Homepage() {
         <Stack justify="center" align="center" py={10} flexWrap={"wrap"}>
           <Text color="white" textAlign={"center"}>What You Get</Text>
           <Heading color="white" textAlign={"center"}>Our Services</Heading>
-
+          <Divider alignSelf="center" border={`2px solid ${primaryColor}`} width="150px" color={primaryColor} />
           <Flex width="100%" justify="center" wrap="wrap" gap={10}>
-            <ServicesCard serviceName={"Real estate management"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
-
-            <ServicesCard serviceName={"Branding"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
-
-            <ServicesCard serviceName={"Marketing"} description={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia eius, soluta exercitationem ducimus inventore saepe nostrum placeat temporibus, dolorum maxime vero sapiente tempore rerum enim eum ab architecto, commodi distinctio."} cardIcon={BsHouse} />
+            <ServiceSection />
           </Flex>
         </Stack>
       </Stack>
