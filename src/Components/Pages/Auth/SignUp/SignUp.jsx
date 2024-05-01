@@ -1,8 +1,8 @@
 import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, FormHelperText, Heading, Text, useToast, Switch, Textarea } from "@chakra-ui/react";
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
-import { Link } from "react-router-dom";
-import {  auth, userRef } from "../../../Utils/Firebase/Firebase";
+import { Link, useNavigate } from "react-router-dom";
+import { auth, userRef } from "../../../Utils/Firebase/Firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc } from "firebase/firestore";
 
@@ -21,6 +21,7 @@ export default function SignUpPage() {
     const [isCompany, setIsCompany] = useState(false)
     const [errors, setErrors] = useState(regValues);
     const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate()
 
     const [regInfo, setRegInfo] = useState({
         firstName: "",
@@ -43,15 +44,15 @@ export default function SignUpPage() {
     }
 
     const validateFirstname = (value) => {
-        if (!value || value.length < 4) {
-            return 'First name must be at least 4 characters!';
+        if (!value || value.length < 2) {
+            return 'First name must be at least 2 characters!';
         }
         return '';
     };
 
     const validateLastname = (value) => {
-        if (!value || value.length < 4) {
-            return 'Last name must be at least 4 characters!';
+        if (!value || value.length < 2) {
+            return 'Last name must be at least 2 characters!';
         }
         return '';
     };
@@ -87,14 +88,11 @@ export default function SignUpPage() {
     };
 
     async function handleSubmit(e) {
-        setIsLoading(true);
         e.preventDefault();
         const newErrors = {};
-
+        setIsLoading(true)
         // Validate each field
         Object.entries(regInfo).forEach(([key, value]) => {
-            setIsLoading(true)
-
             let error = '';
 
             switch (key) {
@@ -122,19 +120,18 @@ export default function SignUpPage() {
 
             if (error) {
                 newErrors[key] = error;
-                setIsLoading(false)
+                // setIsLoading(false)
             }
         });
 
         // If there are validation errors, set the errors and stop form submission
         if (Object.keys(newErrors).length > 0 || regInfo.password !== regInfo.confirmedPassword) {
             setErrors(newErrors);
-            setIsLoading(false);
+            setIsLoading(false)
             return;
         }
 
         try {
-            setIsLoading(true)
             createUserWithEmailAndPassword(auth, regInfo.email, regInfo.password)
                 .then(async (userCredential) => {
                     const userData = {
@@ -151,57 +148,30 @@ export default function SignUpPage() {
                     console.log(userCredential)
                     // Setting user data in Firestore after user creation
                     await addDoc(userRef, userData)
-                    // setIsLoading(false)
                 })
                 .then(() => {
                     console.log("New user has been created successfully");
                     toast({ title: "Registration successful", description: "User account was created successfully", status: "success", position: "bottom", duration: 3000, })
-                    setIsLoading(false)
+                    navigate("/profile")
                     // Set logged-in state after successful registration
-            localStorage.setItem('loggedInUser', true); 
-            setIsLoading(true);
+                    localStorage.setItem('loggedInUser', true);
                 })
                 .catch((error) => {
                     console.log("An error occurred: " + error.message);
                     setIsLoading(false)
                 });
-            // RegisterNewUser
-            //     (
-            //         {
-            //             email: regInfo.email, toast: toast,
-            //             firstName: regInfo.firstName, lastName: regInfo.lastName,
-            //             password: regInfo.password, phoneNumber: regInfo.phoneNumber,
 
-            //         }
-            //     )
-            setIsLoading(true)
         } catch (error) {
             const errorCode = error.code;
             const errorMessage = error.message;
             console.error("Error registering user:", errorCode, errorMessage);
-            setIsLoading(false)
         } finally {
-            setIsLoading(false)
         }
 
         // If there are no validation errors, continue with form submission logic
         console.log("Form submitted successfullyyyyyy");
-        setIsLoading(false)
     }
 
-    // SignUpPage.js
-
-    // ... (existing code)
-
-    // function handleSubmit(e) {
-    //     e.preventDefault();
-
-    //     // Your existing validation logic
-
-    //     // If there are no validation errors, continue with user registration
-    //     if (Object.keys(newErrors).length === 0 && regInfo.password === regInfo.confirmedPassword) {
-
-    // }
 
     function handleToggle() {
         setIsCompany(!isCompany)

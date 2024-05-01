@@ -17,7 +17,7 @@ import { setCurrentUser, setIsAuthenticated } from "./Components/Store/user/user
 import { useDispatch } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./Components/Utils/Firebase/Firebase";
-import ProtectedRoute from "./Components/Pages/Auth/ProtectedRoute";
+import HideOnAuth from "./Components/Utils/NoAuth";
 
 
 function App() {
@@ -47,11 +47,10 @@ function App() {
         <Route path="/profile" element={<RequireAuth childComponent={<ProfilePage />} />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/pricing" element={<PricingPage />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/login" element={<HideOnAuth childComponent={<LoginPage />} />} />
+        <Route path="/sign-up" element={<HideOnAuth childComponent={<SignUpPage />} />} />
         <Route path="/checkout" element={<RequireAuth childComponent={<CheckoutPage />} />} />
         <Route path="*" element={<PageNotFound />} />
-        <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
       </Routes>
       <Footer />
     </BrowserRouter>

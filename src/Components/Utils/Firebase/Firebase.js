@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword,} from "firebase/auth";
-import { addDoc, collection, getFirestore, set, ref } from "firebase/firestore";
+import { getAuth, } from "firebase/auth";
+import { collection, getFirestore, } from "firebase/firestore";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY
@@ -22,84 +22,3 @@ export const fdb = getFirestore(app)
 export const auth = getAuth(app)
 
 export const userRef = collection(fdb, "Users")
-
-
-// export function RegisterNewUser({email, password, firstName, lastName, displayName, phoneNumber}){
-//     createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     set(ref(fdb, "Users/" + userCredential.user.uid),{
-//         firstName: firstName,
-//         lastName: lastName,
-//         email: email,
-//         password: password,
-//         phoneNumber: phoneNumber,
-//     })
-// }).then(()=>{
-//   console.log("New user has been created succesfully")
-// }).catch((error)=>{
-//   console.log("An error occured:" + error.message)
-// })
-// }
-
-
-
-
-
-
-
-// export const createUserDocumentFromAuth = async ({userAuth, firstName,lastName,phoneNumber,password}) => {
-//     const userDocRef = doc(db, 'users', userAuth.uid);
-  
-//     const userSnapshot = await getDoc(userDocRef);
-  
-//     if (!userSnapshot.exists()) {
-//       const { displayName, email } = userAuth;
-//       const createdAt = new Date();
-//       try {
-//         await setDoc(userDocRef, {
-//           displayName,
-//           email,
-//           createdAt,
-//           firstName,
-//           lastName, 
-//           phoneNumber,
-//           password
-//         });
-//       } catch (error) {
-//         console.log('error creating the user', error.message);
-//       }
-//     }
-//     return userDocRef;
-//   };
-
-
-
-//Implementing user session persistent
-
-// const auth = getAuth();
-// export function LoginEmailandPassword(){
-//   .then(({email, password}) => {
-//     return signInWithEmailAndPassword(auth, email, password);
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     console.log(errorCode)
-//     const errorMessage = error.message;
-//     console.log(errorMessage)
-//   });
-// }
-
-  
-//   export const createAuthUserWithEmailAndPassword = async (email, password) => {
-//     if (!email || !password) return;
-//     return await createUserWithEmailAndPassword(auth, email, password)
-//   }
-
-
-
-
-//   export const signOutUser = async () => await signOut(auth)
-  
-//   export const onAuthStateChangedListener = (callBack) => {
-//     onAuthStateChanged(auth, callBack)
-//   }
