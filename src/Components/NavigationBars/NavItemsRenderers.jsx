@@ -1,17 +1,30 @@
 import { Stack, Heading, } from "@chakra-ui/react"
 import { navItems } from "./navItems";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./nav.css"
 import { selectCurrentUser } from "../Store/user/userSelector";
 import { useSelector } from "react-redux";
 import { IoPower } from "react-icons/io5";
 
-export default function NavItemsRenderers({ direction, color, onClick }) {
 
-    const clearCache = () => {
-        // Clear browser cache by reloading the page
-        window.location.reload(true);
-      };
+
+export default function NavItemsRenderers({ direction, color, onClick }) {
+    const navigate = useNavigate()
+    function LogoutUser() {
+        const handleClearCookiesAndSiteData = () => {
+            if (window.confirm("Are you sure you want to logout")) {
+                // Clear site data using browser API if caches is available
+                if (window.caches) {
+                    window.sessionStorage.clear()
+                }
+                window.sessionStorage.clear()
+                localStorage.removeItem("persist:root")
+                window.location.reload()
+                navigate("/login")
+            }
+        };
+        handleClearCookiesAndSiteData()
+    }
 
     const currentUser = useSelector(selectCurrentUser)
     console.log(currentUser)
@@ -38,8 +51,7 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
                         </Heading>
                     </NavLink>
                 ))}
-            {/* <Heading>{user!== null || user!== undefined ? user.email : ""}</Heading> */}
-            {currentUser !== null && <IoPower fontSize={30} color="white" cursor="pointer" onClick={clearCache} />}
+            {currentUser !== null && <IoPower fontSize={30} color="white" cursor="pointer" onClick={LogoutUser} />}
 
         </Stack >
     );
