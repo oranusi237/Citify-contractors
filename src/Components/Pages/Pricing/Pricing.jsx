@@ -3,11 +3,18 @@ import FadeInAnimationContainer from "../../AnimationContainers/FadeIn";
 import "../../AnimationContainers/styles.css";
 import { primaryColor } from "../../Reuseables/colors";
 import PricingCard from "../../Reuseables/Cards/PricingCard";
+import PaymentConfirmationModal from "../../Reuseables/Modals/PaymentModal";
+import PaywithPaystack from "../../Paystack/PaystackPaymentConfig";
 
 export default function PricingPage() {
+
+    const NGPricePlan = { basic: 1200000, premium: 1500000, gold: 2000000 }
+
     function formatCurrency(amount) {
         return new Intl.NumberFormat().format(amount)
     }
+
+
     return (
         <Box mb={16} mt={50} minH="100vh">
             <section>
@@ -17,11 +24,11 @@ export default function PricingPage() {
                         <Heading color={"#031B23"} fontWeight={500} fontSize="23px" textAlign="center">Explore our pricing options to find the perfect fit for your project needs.</Heading>
                         <Spacer height={16} />
                         <Flex justify="center" wrap="wrap" gap={10} >
-                            <PricingCard numberOfFeatures={8} planName={"Basic Plan"} planPriceNGN={formatCurrency(1200000)} planPriceUSD={formatCurrency(1000)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"Cars"} feature3={"Card board walls and Roofing sheets"} feature4={"Local Tress and Shrubs"} feature5={"4mm Glass Box Casing "} feature6={"Delivery"} feature7={"Normal Table"} feature8={"Normal exhibition stand"} />
+                            <PricingCard buttonSection={<PaymentConfirmationModal selectedPackage={"Basic Plan"} PaymentButton={<PaywithPaystack amnt={NGPricePlan.basic} />} />} numberOfFeatures={8} planName={"Basic Plan"} planPriceNGN={formatCurrency(NGPricePlan.basic)} planPriceUSD={formatCurrency(1000)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"Cars"} feature3={"Card board walls and Roofing sheets"} feature4={"Local Tress and Shrubs"} feature5={"4mm Glass Box Casing "} feature6={"Delivery"} feature7={"Normal Table"} feature8={"Normal exhibition stand"} />
 
-                            <PricingCard numberOfFeatures={10} planName={"Premium Plan"} planPriceNGN={formatCurrency(1500000)} planPriceUSD={formatCurrency(1200)} planDuration={"Yearly Plan"} feature1={"Scale 1:100 "} feature2={"Interior  lights or Exterior lights"} feature3={"Cars"} feature4={"Card board made Corrugated Roofing sheets"} feature5={"Normal Tress and Shrubs"} feature6={"4mm Glass Box Casing"} feature7={"Model Table Stand"} feature8={"Delivery"} feature9={"Standard Table Stand"} feature10={"Standard exhibition stand"} />
+                            <PricingCard buttonSection={<PaymentConfirmationModal selectedPackage={"Premium Plan"} PaymentButton={<PaywithPaystack amnt={NGPricePlan.premium} />} />} numberOfFeatures={10} planName={"Premium Plan"} planPriceNGN={formatCurrency(NGPricePlan.premium)} planPriceUSD={formatCurrency(1200)} planDuration={"Yearly Plan"} feature1={"Scale 1:100 "} feature2={"Interior  lights or Exterior lights"} feature3={"Cars"} feature4={"Card board made Corrugated Roofing sheets"} feature5={"Normal Tress and Shrubs"} feature6={"4mm Glass Box Casing"} feature7={"Model Table Stand"} feature8={"Delivery"} feature9={"Standard Table Stand"} feature10={"Standard exhibition stand"} />
 
-                            <PricingCard numberOfFeatures={12} planName={"Gold Plan"} planPriceNGN={formatCurrency(2000000)} planPriceUSD={formatCurrency(1600)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"0.2cm thick form board for walls"} feature3={"Exterior and Interior Lights"} feature4={"Human figures"} feature5={"Live lighted Cars"} feature6={"3D Corrugated Plastic Roofing sheets"} feature7={"Foreign Tress and Shrubs"} feature8={"4mm Glass Box Casing"} feature9={"Customised Model Table Stand"} feature10={"Delivery"} feature11={"Fully Customized Table Stand"} feature12={"Fully customized Exhibition stand "} />
+                            <PricingCard buttonSection={<PaymentConfirmationModal selectedPackage={"Gold Plan"} PaymentButton={<PaywithPaystack amnt={NGPricePlan.gold} />} />} numberOfFeatures={12} planName={"Gold Plan"} planPriceNGN={formatCurrency(NGPricePlan.gold)} planPriceUSD={formatCurrency(1600)} planDuration={"Yearly Plan"} feature1={"Scale 1:100"} feature2={"0.2cm thick form board for walls"} feature3={"Exterior and Interior Lights"} feature4={"Human figures"} feature5={"Live lighted Cars"} feature6={"3D Corrugated Plastic Roofing sheets"} feature7={"Foreign Tress and Shrubs"} feature8={"4mm Glass Box Casing"} feature9={"Customised Model Table Stand"} feature10={"Delivery"} feature11={"Fully Customized Table Stand"} feature12={"Fully customized Exhibition stand "} />
                         </Flex>
                     </Box>
                 } />
