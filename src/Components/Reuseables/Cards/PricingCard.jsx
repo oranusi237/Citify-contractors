@@ -1,11 +1,10 @@
 import { Box, Stack, ListItem, List, Heading, Text, } from "@chakra-ui/react";
-import CustomSolidButton from "../Solidbutton";
 import { primaryColor } from "../colors";
 import HoverAnimationContainer from "../../AnimationContainers/Hover";
 // import { useEffect, } from "react";
 
 export default function PricingCard({ planName, numberOfFeatures, planDuration, planPriceNGN, planPriceUSD, feature1, feature2, feature3, feature4, feature5,
-    feature6, feature7, feature8, feature9, feature10, feature11, feature12 }) {
+    feature6, feature7, feature8, feature9, feature10, feature11, feature12, buttonSection }) {
 
     // const [currentRate, setCurrentRate] = useState()
 
@@ -46,9 +45,8 @@ export default function PricingCard({ planName, numberOfFeatures, planDuration, 
                         {numberOfFeatures >= 11 && <ListItem>11. {feature11}</ListItem>}
                         {numberOfFeatures === 12 && <ListItem>12. {feature12}</ListItem>}
                     </List>
-                    {/* <Spacer /> */}
                     <Stack pb={5}>
-                        <CustomSolidButton  buttonText={"Choose plan"} />
+                        {buttonSection}
                     </Stack>
                 </Stack>
             } />
