@@ -15,9 +15,9 @@ export default function PaywithPaystack({ amnt }) {
     const auth = getAuth(app)
     const uid = currentUser.uid
 
-    const name = userDetails.firstName + userDetails.lastName
-    const email = userDetails.email
-    const phone = userDetails.phoneNumber
+    const name = userDetails?.firstName + userDetails?.lastName
+    const email = userDetails?.email
+    const phone = userDetails?.phoneNumber
 
     useEffect(() => {
 
