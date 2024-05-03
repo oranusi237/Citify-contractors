@@ -1,0 +1,8 @@
+.payment-button{
+    display: flex;
+    padding: 10px;
+    background-color: #058F44;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+}
