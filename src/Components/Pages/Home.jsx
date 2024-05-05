@@ -23,7 +23,7 @@ export default function Homepage() {
   return (
     <Box>
       <Link to="/">
-      <HeroSection buttonText={"Find out more"} backgroundImage={Bg} headingText={"Citify Contractors"} heroDescription="We help you achieve your goals" />
+        <HeroSection buttonText={"Find out more"} backgroundImage={Bg} headingText={"Citify Contractors"} heroDescription="We help you achieve your goals" />
       </Link>
       <Box mt={5} >
         <Stack align="center" direction={{ base: 'column', md: 'row' }}>
@@ -107,7 +107,7 @@ export default function Homepage() {
           <Text>Get Started</Text>
           <Heading >Ready to get started?</Heading>
           <Link to="/contact">
-          <Button mt={5}>Contact Us</Button>
+            <Button mt={5}>Contact Us</Button>
           </Link>
         </Center>
       </Box>
