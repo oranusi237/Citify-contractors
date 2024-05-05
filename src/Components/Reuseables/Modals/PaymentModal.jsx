@@ -5,7 +5,7 @@ export default function PaymentConfirmationModal({ selectedPackage, PaymentButto
     const { isOpen, onOpen, onClose } = useDisclosure()
     return (
         <Box>
-            <CustomSolidButton onClick={onOpen} buttonText={"Selec Package"} />
+            <CustomSolidButton onClick={onOpen} buttonText={"Select Package"} />
 
             <Modal isCentered closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
