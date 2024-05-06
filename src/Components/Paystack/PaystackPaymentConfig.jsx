@@ -13,7 +13,7 @@ export default function PaywithPaystack({ amnt }) {
     const [userDetails, setUserDetails] = useState([])
     const currentUser = useSelector(selectCurrentUser)
     const auth = getAuth(app)
-    const uid = currentUser.uid
+    const uid = currentUser?.uid
 
     const name = userDetails?.firstName + userDetails?.lastName
     const email = userDetails?.email
@@ -35,7 +35,7 @@ export default function PaywithPaystack({ amnt }) {
         querySnapshot();
     }, [auth.currentUser, uid]);
 
-    const publicKey = process.env.REACT_APP_PAYSTACK_PUB_KEY
+    const pubKey = process.env.REACT_APP_PAYSTACK_PUB_KEY
     const toast = useToast()
     const amount = amnt * 100
 
@@ -46,7 +46,7 @@ export default function PaywithPaystack({ amnt }) {
             name,
             phone,
         },
-        publicKey,
+        publicKey: pubKey,
         text: "Confirm and Pay",
         onSuccess: () =>
             toast({ title: "Payment Successful", description: "Your payment was successful, you will receive and email with confirmation of payment" }),

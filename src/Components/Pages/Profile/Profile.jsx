@@ -37,7 +37,7 @@ export default function ProfilePage() {
         };
 
         querySnapshot();
-    }, []);
+    }, [auth.currentUser, uid]);
 
     function handleImageChange(event) {
         setProfileImage(event.target.files[0])

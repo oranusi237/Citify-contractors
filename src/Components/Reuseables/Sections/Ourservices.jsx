@@ -1,6 +1,9 @@
 import { Flex } from "@chakra-ui/react";
 import ServiceImage from "../../Assets/customer-service.jpg";
-import { MdBusinessCenter, MdOutlineRealEstateAgent, MdBrandingWatermark, MdSell } from "react-icons/md";
+import { FaPeopleCarryBox } from "react-icons/fa6";
+import { CgMediaPodcast } from "react-icons/cg";
+import { MdBusinessCenter } from "react-icons/md";
+import { FaChalkboardTeacher } from "react-icons/fa";
 import ServicesCard from "../../Pages/About/ServicesCard";
 
 
