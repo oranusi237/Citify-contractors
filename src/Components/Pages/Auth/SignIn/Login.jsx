@@ -2,7 +2,7 @@ import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, H
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { browserLocalPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { browserLocalPersistence, getAuth, setPersistence, signInWithEmailAndPassword, clearPersistence, signOut } from "firebase/auth";
 import { useDispatch, } from "react-redux";
 import { setCurrentUser, setIsAuthenticated } from "../../../Store/user/user-slice";
 
@@ -28,8 +28,7 @@ export default function LoginPage() {
         setLoginInfo((prevValue) => ({ ...prevValue, [name]: value }));
         setError((prevError) => ({ ...prevError, [name]: "" }))
     }
-
-
+      
     function handleSubmit(e) {
         e.preventDefault();
 
