@@ -22,9 +22,7 @@ export default function Homepage() {
 
   return (
     <Box>
-      <Link to="/">
-        <HeroSection buttonText={"Find out more"} backgroundImage={Bg} headingText={"Citify Contractors"} heroDescription="We help you achieve your goals" />
-      </Link>
+        <HeroSection buttonText={"Find out more"} buttonLink="/about" backgroundImage={Bg} headingText={"Citify Contractors"} heroDescription="We help you achieve your goals" />
       <Box mt={5} >
         <Stack align="center" direction={{ base: 'column', md: 'row' }}>
           <Box bgImage={Bg1} bgSize={"cover"} bgPosition={"center"} flex={1} height="500px" borderRadius="5px"></Box>
@@ -46,7 +44,7 @@ export default function Homepage() {
 
       <Spacer height={50} />
 
-      <Stack mt={5} background="#282C35" minH={"max-content"} borderRadius="20px">
+      <Stack mt={5} background="#2E8B57" minH={"max-content"} borderRadius="20px">
         <Stack justify="center" align="center" py={10} flexWrap={"wrap"}>
           <Text color="white" textAlign={"center"}>What You Get</Text>
           <Heading color="white" textAlign={"center"}>Our Services</Heading>
@@ -102,7 +100,7 @@ export default function Homepage() {
         </Stack >
       </Box >
 
-      <Box mt={8} textAlign="center" background="#282C35" color="#fff" borderRadius="10px" height={180}>
+      <Box mt={8} textAlign="center" background="#2E8B57" color="#fff" borderRadius="10px" height={180}>
         <Center flexDirection="column" lineHeight={10}>
           <Text>Get Started</Text>
           <Heading >Ready to get started?</Heading>
