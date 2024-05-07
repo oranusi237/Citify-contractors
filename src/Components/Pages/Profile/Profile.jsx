@@ -20,7 +20,7 @@ export default function ProfilePage() {
     const uid = currentUser.uid;
   
     const [profileImage, setProfileImage] = useState(null);
-    const plan = useSelector(selectPlan); // Access plan from Redux store
+    const plan = useSelector(selectPlan); 
   
     const toast = useToast();
     useEffect(() => {
@@ -86,7 +86,6 @@ export default function ProfilePage() {
       
                   <Flex align="center" direction="column" wrap="wrap">
                       <Stack width="max-content" align="start">
-                          {/* profile side bar */}
                           {currentUser.photoURL !== "" && currentUser.photoURL !== null && <Image my={5} height={"300px"} width={"300px"} borderRadius={"full"} objectFit={"cover"} src={currentUser.photoURL} />}
                           {!currentUser.photoURL &&
                               <>
@@ -149,6 +148,20 @@ export default function ProfilePage() {
                                       <Text>{userDetails?.address}</Text>
                                   </Stack>
                               </Flex>
+                              {plan && (
+                                <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify={"space-between"} >
+                                  <Stack>
+                                    <Heading fontSize="18px">Plan</Heading>
+                                    <Text>{plan.name}</Text>
+                                  </Stack>
+                                   {/* Upgrade button if user doesn't have a paid plan  */}
+                                   {!plan.ispaid && (
+                                    <CustomSolidButton as="Link" href="/pricing" >
+                                        Upgrade to a Paid Plan
+                                    </CustomSolidButton>
+                                   )}
+                                </Flex>
+                              )}
                               {userDetails?.isCompany === true &&
                                   <Box>
                                       <Divider />
