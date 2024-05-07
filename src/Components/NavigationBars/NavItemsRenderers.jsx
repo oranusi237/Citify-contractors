@@ -1,4 +1,4 @@
-import { Stack, Heading, } from "@chakra-ui/react"
+import { Stack, Heading, Flex } from "@chakra-ui/react"
 import { navItems } from "./navItems";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./nav.css"
@@ -9,17 +9,15 @@ import { IoPower } from "react-icons/io5";
 
 
 export default function NavItemsRenderers({ direction, color, onClick }) {
+    const token = localStorage.getItem("auth-token")
     const navigate = useNavigate()
+
     function LogoutUser() {
         const handleClearCookiesAndSiteData = () => {
             if (window.confirm("Are you sure you want to logout")) {
-                // Clear site data using browser API if caches is available
-                if (window.caches) {
-                    window.sessionStorage.clear()
-                }
                 window.sessionStorage.clear()
                 localStorage.removeItem("persist:root")
-                window.location.reload()
+                localStorage.removeItem("auth-token")
                 navigate("/login")
             }
         };
@@ -31,8 +29,8 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
     const filteredLink = navItems.filter((items) => items.name.toLowerCase() !== "login" && items.name.toLowerCase() !== "sign up")
     const signedOutUserLink = navItems.filter((item) => item.name.toLowerCase() !== "profile")
     return (
-        <Stack justify="center" direction={direction} gap={5}>
-            {currentUser === null || currentUser === undefined ? signedOutUserLink.map((item) => (
+        <Stack align={direction === "row" && "center"} justify="center" direction={direction} gap={5}>
+            {token === null ? signedOutUserLink.map((item) => (
                 <NavLink onClick={onClick} className={({ isActive }) =>
                     isActive ? "active" : "in-active"
                 } key={item.id} to={item.path}>
@@ -51,7 +49,12 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
                         </Heading>
                     </NavLink>
                 ))}
-            {currentUser !== null && <IoPower fontSize={30} color="white" cursor="pointer" onClick={LogoutUser} />}
+            {token !== null &&
+                <Flex cursor={"pointer"} onClick={LogoutUser} gap={1} align="center">
+                    <Heading color={"white"} fontSize={20}>Logout</Heading>
+                    <IoPower fontSize={30} color="white" />
+                </Flex>
+            }
 
         </Stack >
     );
