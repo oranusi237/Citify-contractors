@@ -146,7 +146,7 @@ export default function SignUpPage() {
                         userID: userCredential.user.uid
                     };
                     console.log(userCredential)
-                    localStorage.setItem("auth-token", userCredential.user.getIdToken())
+                    localStorage.setItem("auth-token", await userCredential.user.getIdToken())
                     // Setting user data in Firestore after user creation
                     await addDoc(userRef, userData)
                 })
