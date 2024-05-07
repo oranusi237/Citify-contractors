@@ -42,11 +42,9 @@ export default function LoginPage() {
                     await signInWithEmailAndPassword(auth, loginInfo.email, loginInfo.password).then(async (userCredential) => {
                         dispatch(setCurrentUser(userCredential.user))
                         dispatch(setIsAuthenticated(true))
-                        // setUser(userCredential.user)
                         localStorage.setItem("auth-token", await userCredential.user.getIdToken())
                         console.log("Your sign in was successful")
                         setIsLoading(false)
-                        // setIsAuthenticated(true)
                         navigate("/")
                     })
                         .catch((error) => {
