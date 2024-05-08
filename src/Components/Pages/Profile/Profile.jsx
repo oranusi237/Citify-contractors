@@ -18,10 +18,10 @@ export default function ProfilePage() {
     const [loading, setLoading] = useState(false);
     const auth = getAuth(app);
     const uid = currentUser.uid;
-  
+
     const [profileImage, setProfileImage] = useState(null);
-    const plan = useSelector(selectPlan); 
-  
+    const plan = useSelector(selectPlan);
+
     const toast = useToast();
     useEffect(() => {
 
@@ -82,107 +82,106 @@ export default function ProfilePage() {
 
     return (
 
-              !uid ? <Navigate to="/login" state={{ from: location }} replace /> :
-      
-                  <Flex align="center" direction="column" wrap="wrap">
-                      <Stack width="max-content" align="start">
-                          {currentUser.photoURL !== "" && currentUser.photoURL !== null && <Image my={5} height={"300px"} width={"300px"} borderRadius={"full"} objectFit={"cover"} src={currentUser.photoURL} />}
-                          {!currentUser.photoURL &&
-                              <>
-                                  <Stack py={5} justify="center" align="center">
-                                      {/* <Input onChange={(e) => setProfileImage(e.target.files[0])} type="file" /> */}
-                                      <Flex
-                                          align="center"
-                                          justify="center"
-                                          border="2px dashed #CBD5E0"
-                                          borderRadius="full"
-                                          height={200}
-                                          p={10}
-                                          w={200}
-                                          cursor="pointer"
-                                      >
-                                          <Input
-                                              type="file"
-                                              accept="image/*"
-                                              position="absolute"
-                                              width="full"
-                                              height="full"
-                                              opacity={0}
-                                              aria-hidden="true"
-                                              onChange={handleImageChange}
-                                          />
-                                          <Text textAlign="center" color="#718096">
-                                              {profileImage === null ? " Drag and drop your image here or click to upload" : `Your selected image: ${profileImage?.name}`}
-                                          </Text>
-                                      </Flex>
-                                      <CustomSolidButton isLoading={loading} loadingText={"Updating profile picture"} buttonText={"Update profile picture"} onClick={handleUpload} type={'button'} />
-                                  </Stack>
-                              </>
-      
-                          }
-      
-                          <Divider width="100%" />
-                          <Heading color={primaryColor} py={5} fontSize="25px">Profile information</Heading>
-                          <Divider width="100%" />
-                          <Stack justify="start" borderRadius={10} gap={[5, 10]} padding={5} bg={"#ff0ff"} width={["100%", "100%", "700px"]}>
-                              <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify="space-between">
-                                  <Stack>
-                                      <Heading fontSize="18px">Full Name</Heading>
-                                      <Text>{userDetails?.firstName + " " + userDetails?.lastName}</Text>
-                                  </Stack>
-      
-                                  <Stack>
-                                      <Heading textAlign={["left", "right"]} fontSize="18px">Email address</Heading>
-                                      <Text>{userDetails?.email}</Text>
-                                  </Stack>
-                              </Flex>
-      
-                              <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify="space-between">
-                                  <Stack>
-                                      <Heading fontSize="18px">Phone Number</Heading>
-                                      <Text>{userDetails?.phoneNumber}</Text>
-                                  </Stack>
-      
-                                  <Stack>
-                                      <Heading textAlign={["left", "right"]} fontSize="18px">Address</Heading>
-                                      <Text>{userDetails?.address}</Text>
-                                  </Stack>
-                              </Flex>
-                              {plan && (
-                                <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify={"space-between"} >
-                                  <Stack>
+        !uid ? <Navigate to="/login" state={{ from: location }} replace /> :
+
+            <Flex align="center" direction="column" wrap="wrap">
+                <Stack width="max-content" align="start">
+                    {currentUser.photoURL !== "" && currentUser.photoURL !== null && <Image my={5} height={"300px"} width={"300px"} borderRadius={"full"} objectFit={"cover"} src={currentUser.photoURL} />}
+                    {!currentUser.photoURL &&
+                        <>
+                            <Stack py={5} justify="center" align="center">
+                                {/* <Input onChange={(e) => setProfileImage(e.target.files[0])} type="file" /> */}
+                                <Flex
+                                    align="center"
+                                    justify="center"
+                                    border="2px dashed #CBD5E0"
+                                    borderRadius="full"
+                                    height={200}
+                                    p={10}
+                                    w={200}
+                                    cursor="pointer"
+                                >
+                                    <Input
+                                        type="file"
+                                        accept="image/*"
+                                        position="absolute"
+                                        width="full"
+                                        height="full"
+                                        opacity={0}
+                                        aria-hidden="true"
+                                        onChange={handleImageChange}
+                                    />
+                                    <Text textAlign="center" color="#718096">
+                                        {profileImage === null ? " Drag and drop your image here or click to upload" : `Your selected image: ${profileImage?.name}`}
+                                    </Text>
+                                </Flex>
+                                <CustomSolidButton isLoading={loading} loadingText={"Updating profile picture"} buttonText={"Update profile picture"} onClick={handleUpload} type={'button'} />
+                            </Stack>
+                        </>
+
+                    }
+
+                    <Divider width="100%" />
+                    <Heading color={primaryColor} py={5} fontSize="25px">Profile information</Heading>
+                    <Divider width="100%" />
+                    <Stack justify="start" borderRadius={10} gap={[5, 10]} padding={5} bg={"#ff0ff"} width={["100%", "100%", "700px"]}>
+                        <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify="space-between">
+                            <Stack>
+                                <Heading fontSize="18px">Full Name</Heading>
+                                <Text>{userDetails?.firstName + " " + userDetails?.lastName}</Text>
+                            </Stack>
+
+                            <Stack>
+                                <Heading textAlign={["left", "right"]} fontSize="18px">Email address</Heading>
+                                <Text>{userDetails?.email}</Text>
+                            </Stack>
+                        </Flex>
+
+                        <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify="space-between">
+                            <Stack>
+                                <Heading fontSize="18px">Phone Number</Heading>
+                                <Text>{userDetails?.phoneNumber}</Text>
+                            </Stack>
+
+                            <Stack>
+                                <Heading textAlign={["left", "right"]} fontSize="18px">Address</Heading>
+                                <Text>{userDetails?.address}</Text>
+                            </Stack>
+                        </Flex>
+                        {plan && (
+                            <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify={"space-between"} >
+                                <Stack>
                                     <Heading fontSize="18px">Plan</Heading>
                                     <Text>{plan.name}</Text>
-                                  </Stack>
-                                   {/* Upgrade button if user doesn't have a paid plan  */}
-                                   {!plan.ispaid && (
+                                </Stack>
+                                {/* Upgrade button if user doesn't have a paid plan  */}
+                                {!plan.ispaid && (
                                     <CustomSolidButton as="Link" href="/pricing" >
                                         Upgrade to a Paid Plan
                                     </CustomSolidButton>
-                                   )}
+                                )}
+                            </Flex>
+                        )}
+                        {userDetails?.isCompany === true &&
+                            <Box>
+                                <Divider />
+                                <Heading color={primaryColor} py={5} fontSize={"20px"} textAlign={"start"}>Company information</Heading>
+                                <Divider width />
+                                <Flex my={100} mt={5} wrap={"wrap"} gap={2} width={"100%"} px={10} justify="space-between">
+                                    <Stack>
+                                        <Heading fontWeight={550} fontSize="18px">Company name</Heading>
+                                        <Text>{userDetails?.companyName}</Text>
+                                    </Stack>
+                                    <Stack textAlign={["start", "start", "right"]} width={"50%"}>
+                                        <Heading fontSize="18px">Company description</Heading>
+                                        <Text>{userDetails?.companyDescription}</Text>
+                                    </Stack>
                                 </Flex>
-                              )}
-                              {userDetails?.isCompany === true &&
-                                  <Box>
-                                      <Divider />
-                                      <Heading color={primaryColor} py={5} fontSize={"20px"} textAlign={"start"}>Company information</Heading>
-                                      <Divider width />
-                                      <Flex my={100} mt={5} wrap={"wrap"} gap={2} width={"100%"} px={10} justify="space-between">
-                                          <Stack>
-                                              <Heading fontWeight={550} fontSize="18px">Company name</Heading>
-                                              <Text>{userDetails?.companyName}</Text>
-                                          </Stack>
-                                          <Stack textAlign={["start", "start", "right"]} width={"50%"}>
-                                              <Heading fontSize="18px">Company description</Heading>
-                                              <Text>{userDetails?.companyDescription}</Text>
-                                          </Stack>
-                                      </Flex>
-                                  </Box>
-                              }
-                          </Stack>
-                          <Spacer height={100} />
-                      </Stack>
-                  </Flex>
-          )
-      }
-      
+                            </Box>
+                        }
+                    </Stack>
+                    <Spacer height={100} />
+                </Stack>
+            </Flex>
+    )
+}
