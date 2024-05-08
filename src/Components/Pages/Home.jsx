@@ -1,8 +1,8 @@
 import { Box, Heading, Text, Stack, Center, Accordion, Divider, AccordionItem, AccordionPanel, AccordionButton, AccordionIcon, Button, Flex, Spacer, } from "@chakra-ui/react";
-import Bg from "../Assets/Images/pexel1.jpg"
 import Bg1 from "../Assets/Images/pexels-icsa-833425-1709003.jpg"
 import HeroSection from "../Reuseables/HeroSection";
 import CustomSolidButton from "../Reuseables/Solidbutton";
+import BgImage from "../../Components/Assets/house-sale.jpg"
 import { Link } from "react-router-dom";
 import { primaryColor } from "../Reuseables/colors";
 import ServiceSection from "../Reuseables/Sections/Ourservices";
@@ -22,7 +22,7 @@ export default function Homepage() {
 
   return (
     <Box>
-        <HeroSection buttonText={"Find out more"} buttonLink="/about" backgroundImage={Bg} headingText={"Citify Contractors"} heroDescription="We help you achieve your goals" />
+      <HeroSection buttonText={"Find out more"} buttonLink="/about" backgroundImage={BgImage} headingText={"Citify Contractors"} heroDescription="Elevating the Standards of Property Marketing Through Creative Brilliance and Expertise" />
       <Box mt={5} >
         <Stack align="center" direction={{ base: 'column', md: 'row' }}>
           <Box bgImage={Bg1} bgSize={"cover"} bgPosition={"center"} flex={1} height="500px" borderRadius="5px"></Box>
