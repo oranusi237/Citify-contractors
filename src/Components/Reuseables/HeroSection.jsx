@@ -9,7 +9,7 @@ export default function HeroSection({ backgroundImage, hasLink, buttonLink, butt
                 <Center height={"100%"}>
                     <Stack color="white" width={["auto", "auto", "500px"]} align="center">
                         <Heading>{headingText}</Heading>
-                        <Text textAlign="center">{heroDescription}.</Text>
+                        <Text fontSize={"18px"} fontWeight={500} textAlign="center">{heroDescription}.</Text>
                         {
                             hasLink ?
                                 <Link to={buttonLink}>
