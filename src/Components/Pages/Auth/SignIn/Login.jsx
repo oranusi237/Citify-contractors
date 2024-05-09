@@ -1,7 +1,7 @@
 import { FormControl, FormLabel, Stack, Input, Flex, Button, FormErrorMessage, Heading, Text, useToast } from "@chakra-ui/react";
 import { primaryColor } from "../../../Reuseables/colors";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, } from "react-router-dom";
 import { browserLocalPersistence, getAuth, setPersistence, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch, } from "react-redux";
 import { setCurrentUser, setIsAuthenticated } from "../../../Store/user/user-slice";
@@ -19,8 +19,6 @@ export default function LoginPage() {
     const dispatch = useDispatch()
 
     const toast = useToast()
-
-
     const navigate = useNavigate()
 
     function handleChange(e) {
@@ -28,7 +26,7 @@ export default function LoginPage() {
         setLoginInfo((prevValue) => ({ ...prevValue, [name]: value }));
         setError((prevError) => ({ ...prevError, [name]: "" }))
     }
-      
+
     function handleSubmit(e) {
         e.preventDefault();
 
@@ -45,7 +43,12 @@ export default function LoginPage() {
                         localStorage.setItem("auth-token", await userCredential.user.getIdToken())
                         console.log("Your sign in was successful")
                         setIsLoading(false)
-                        navigate("/")
+                        var previousPage = sessionStorage.getItem('previousPage');
+                        if (previousPage) {
+                            window.location.href = previousPage
+                        } else {
+                            navigate("/");
+                        }
                     })
                         .catch((error) => {
                             setIsLoading(false)
