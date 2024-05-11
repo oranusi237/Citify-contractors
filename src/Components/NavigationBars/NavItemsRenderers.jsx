@@ -4,7 +4,6 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./nav.css"
 import { selectCurrentUser } from "../Store/user/userSelector";
 import { useSelector } from "react-redux";
-import { IoPower } from "react-icons/io5";
 
 
 
@@ -52,7 +51,6 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
             {token !== null &&
                 <Flex cursor={"pointer"} onClick={LogoutUser} gap={1} align="center">
                     <Heading color={"white"} fontSize={20}>Logout</Heading>
-                    <IoPower fontSize={30} color="white" />
                 </Flex>
             }
 
