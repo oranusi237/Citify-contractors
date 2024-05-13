@@ -12,8 +12,9 @@ export default function Homepage() {
   function CustomAccordionButton({ label, itemNumber }) {
     return (
       <AccordionButton>
-        <Flex fontWeight={500} fontSize="23px" gap={3} justify="start" align="center" flex={1} textAlign='left'>
-          <Center color="white" fontWeight={800} textAlign="center" bg={primaryColor} borderRadius={"50%"} height={"30px"} width={"30px"}>{itemNumber}</Center>{label}
+        <Flex fontWeight={400}  gap={3} justify="start" align="center" flex={1} textAlign='left'>
+          <Center fontSize="23px" color="white" fontWeight={800} textAlign="center" bg={primaryColor} borderRadius={"50%"} height={"30px"} width={"30px"}>{itemNumber}</Center>
+          <Text fontSize={"16px"}>{label}</Text>
         </Flex>
         <AccordionIcon />
       </AccordionButton>
@@ -22,7 +23,7 @@ export default function Homepage() {
 
   return (
     <Box>
-      <HeroSection buttonText={"Find out more"} buttonLink="/about" backgroundImage={BgImage} headingText={"Citify Contractors"} heroDescription="Elevating the Standards of Property Marketing Through Creative Brilliance and Expertise" />
+      <HeroSection buttonText={"Find out more"} hasLink={true} buttonLink="/about" backgroundImage={BgImage} headingText={"Citify Contractors"} heroDescription="Elevating the Standards of Property Marketing Through Creative Brilliance and Expertise" />
       <Box mt={5} >
         <Stack align="center" direction={{ base: 'column', md: 'row' }}>
           <Box bgImage={Bg1} bgSize={"cover"} bgPosition={"center"} flex={1} height="500px" borderRadius="5px"></Box>
@@ -71,7 +72,7 @@ export default function Homepage() {
                         <CustomAccordionButton itemNumber={1} label={"Select a package"} />
                       </h2>
                       <AccordionPanel pb={4}>
-                        Select a package from our pricing table
+                       Select a package from our pricing table
                       </AccordionPanel>
                     </AccordionItem>
 
