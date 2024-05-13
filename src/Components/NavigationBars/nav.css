@@ -1,9 +1,7 @@
-.in-active{
-    text-decoration: none;
-    color: #204E51;
-}
-
-.active{
+.active,
+.active>h2 {
     /* text-decoration: underline; */
-    color: #204E51;
+    font-weight: 800;
+    color: #FDA403;
+    font-weight: 1000;
 }
