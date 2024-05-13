@@ -23,7 +23,7 @@ export default function Homepage() {
 
   return (
     <Box>
-      <HeroSection buttonText={"Find out more"} hasLink={true} buttonLink="/about" backgroundImage={BgImage} headingText={"Citify Contractors"} heroDescription="Elevating the Standards of Property Marketing Through Creative Brilliance and Expertise" />
+      <HeroSection buttonText={"Find out more"} hasLink={true} buttonLink="/about" backgroundImage={BgImage} headingText={"Citify Contractors"} heroDescription="A dynamic marketing and branding firm poised to revolutionize the real estate industry and elevating the Standards of Property Marketing Through Creative Brilliance and Expertise" />
       <Box mt={5} >
         <Stack align="center" direction={{ base: 'column', md: 'row' }}>
           <Box bgImage={Bg1} bgSize={"cover"} bgPosition={"center"} flex={1} height="500px" borderRadius="5px"></Box>
