@@ -1,6 +1,6 @@
 import { Stack, Heading, Flex } from "@chakra-ui/react"
 import { navItems } from "./navItems";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./nav.css"
 import { selectCurrentUser } from "../Store/user/userSelector";
 import { useSelector } from "react-redux";
@@ -22,6 +22,7 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
         };
         handleClearCookiesAndSiteData()
     }
+    const location = useLocation()
 
     const currentUser = useSelector(selectCurrentUser)
     console.log(currentUser)
@@ -30,9 +31,7 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
     return (
         <Stack align={direction === "row" && "center"} justify="center" direction={direction} gap={5}>
             {token === null ? signedOutUserLink.map((item) => (
-                <NavLink onClick={onClick} className={({ isActive }) =>
-                    isActive ? "active" : "in-active"
-                } key={item.id} to={item.path}>
+                <NavLink onClick={onClick} className={location.pathname.includes(item.name) ? "active" : "in-active"} key={item.id} to={item.path}>
                     <Heading color={color} fontSize={20}>
                         {item.name}
                     </Heading>
@@ -40,15 +39,15 @@ export default function NavItemsRenderers({ direction, color, onClick }) {
             ))
                 :
                 filteredLink.map((item) => (
-                    <NavLink onClick={onClick} className={({ isActive }) =>
-                        isActive ? "active" : "in-active"
-                    } key={item.id} to={item.path}>
-                        <Heading color={color} fontSize={20}>
+                    <NavLink onClick={onClick} className={location.pathname.includes(item.name) ? "active" : "in-active"} key={item.id} to={item.path}>
+                        <Heading color={"white"} fontSize={20}>
                             {item.name}
                         </Heading>
                     </NavLink>
-                ))}
-            {token !== null &&
+                ))
+            }
+            {
+                token !== null &&
                 <Flex cursor={"pointer"} onClick={LogoutUser} gap={1} align="center">
                     <Heading color={"white"} fontSize={20}>Logout</Heading>
                 </Flex>
