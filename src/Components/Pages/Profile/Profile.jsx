@@ -1,10 +1,10 @@
 import { Box, Divider, Flex, Heading, Image, Input, Spacer, Stack, Text, useToast } from "@chakra-ui/react";
 import { app, fdb, } from "../../Utils/Firebase/Firebase";
 import { useEffect, useState } from "react";
-import { collection, getDocs, query, where, getFirestore } from "firebase/firestore";
+import { collection, getDocs, query, where, } from "firebase/firestore";
 import { primaryColor } from "../../Reuseables/colors";
 import { useSelector } from "react-redux";
-import { selectCurrentUser, selectPlan } from "../../Store/user/userSelector";
+import { selectCurrentUser } from "../../Store/user/userSelector";
 import { Navigate, useLocation } from "react-router-dom";
 import CustomSolidButton from "../../Reuseables/Solidbutton";
 import { getAuth, updateProfile } from "firebase/auth";
@@ -18,74 +18,74 @@ export default function ProfilePage() {
     const [loading, setLoading] = useState(false);
     const auth = getAuth(app);
     const uid = currentUser.uid;
-  
+
     const [profileImage, setProfileImage] = useState(null);
     // Add state variable for plan
     const [plan, setPlan] = useState(null);
-  
+
     const toast = useToast();
-  
+
     useEffect(() => {
-      const querySnapshot = async () => {
-        if (auth.currentUser !== null) {
-          const snapshot = await getDocs(query(collection(fdb, "Users"), where("userID", "==", uid)));
-          snapshot.forEach((doc) => {
-            setUserDetails(doc.data());
-            // Check for plan field in retrieved data
-            if (doc.data().plan) {
-              setPlan(doc.data().plan); // String value for plan name
-            } else if (doc.data().plans) { // Check for sub-collection for complex plans
-              // Handle retrieving and setting details from sub-collection
+        const querySnapshot = async () => {
+            if (auth.currentUser !== null) {
+                const snapshot = await getDocs(query(collection(fdb, "Users"), where("userID", "==", uid)));
+                snapshot.forEach((doc) => {
+                    setUserDetails(doc.data());
+                    // Check for plan field in retrieved data
+                    if (doc.data().plan) {
+                        setPlan(doc.data().plan); // String value for plan name
+                    } else if (doc.data().plans) { // Check for sub-collection for complex plans
+                        // Handle retrieving and setting details from sub-collection
+                    }
+                });
             }
-          });
-        }
-      };
-  
-      querySnapshot();
+        };
+
+        querySnapshot();
     }, [auth.currentUser, uid]);
-  
+
     function handleImageChange(event) {
-      setProfileImage(event.target.files[0]);
+        setProfileImage(event.target.files[0]);
     }
-  
+
     const handleUpload = () => {
-      setLoading(true);
-      if (profileImage) {
-         // setLoading(true)
-         const storage = getStorage();
-         const storageRef = sRef(storage, `ProfilePics/${uid}`);
-         uploadBytes(storageRef, profileImage).then((snapshot) => {
-        console.log('Uploaded a blob or file!' + snapshot.metadata);
-         });
-         
-                     getMetadata(sRef(storage, `/ProfilePics/${uid}`)).then((metaData) => {
-                         console.log(metaData)
-                     }).catch((error) => {
-                         setLoading(false)
-                         console.log(error)
-                     })
-         
-                     getDownloadURL(sRef(storage, `ProfilePics/${uid}`))
-                         .then((url) => {
-                             if (url !== "") {
-                                 updateProfile(auth.currentUser, { photoURL: url })
-                                 console.log("Update was successful")
-                                 setLoading(false)
-                                 window.location.reload()
-                             }
-                         })
-                         .catch((error) => {
-                             console.log(error)
-                             setLoading(false)
-                         });
-      } else {
-        toast({ title: "No image selected", status: "error", description: "You have not selected any image, cannot upload an empty field", duration: 4000, position: "bottom-right" });
-        setLoading(false);
-      }
+        setLoading(true);
+        if (profileImage) {
+            // setLoading(true)
+            const storage = getStorage();
+            const storageRef = sRef(storage, `ProfilePics/${uid}`);
+            uploadBytes(storageRef, profileImage).then((snapshot) => {
+                console.log('Uploaded a blob or file!' + snapshot.metadata);
+            });
+
+            getMetadata(sRef(storage, `/ProfilePics/${uid}`)).then((metaData) => {
+                console.log(metaData)
+            }).catch((error) => {
+                setLoading(false)
+                console.log(error)
+            })
+
+            getDownloadURL(sRef(storage, `ProfilePics/${uid}`))
+                .then((url) => {
+                    if (url !== "") {
+                        updateProfile(auth.currentUser, { photoURL: url })
+                        console.log("Update was successful")
+                        setLoading(false)
+                        window.location.reload()
+                    }
+                })
+                .catch((error) => {
+                    console.log(error)
+                    setLoading(false)
+                });
+        } else {
+            toast({ title: "No image selected", status: "error", description: "You have not selected any image, cannot upload an empty field", duration: 4000, position: "bottom-right" });
+            setLoading(false);
+        }
     };
-  
+
     const location = useLocation();
-  
+
     return (
 
         !uid ? <Navigate to="/login" state={{ from: location }} replace /> :
