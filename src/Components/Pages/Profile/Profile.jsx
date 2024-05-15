@@ -5,7 +5,7 @@ import { collection, getDocs, query, where, } from "firebase/firestore";
 import { primaryColor } from "../../Reuseables/colors";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../Store/user/userSelector";
-import { Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import CustomSolidButton from "../../Reuseables/Solidbutton";
 import { getAuth, updateProfile } from "firebase/auth";
 import { getDownloadURL, getMetadata, ref as sRef } from "firebase/storage";
@@ -14,14 +14,14 @@ import { getStorage, uploadBytes } from "firebase/storage";
 
 export default function ProfilePage() {
     const [userDetails, setUserDetails] = useState([]);
-    const currentUser = useSelector(selectCurrentUser);
+    const [paymentPlan, setPaymentPlan] = useState("")
     const [loading, setLoading] = useState(false);
+    const currentUser = useSelector(selectCurrentUser);
     const auth = getAuth(app);
-    const uid = currentUser.uid;
+    const uid = currentUser?.uid;
 
     const [profileImage, setProfileImage] = useState(null);
     // Add state variable for plan
-    const [plan, setPlan] = useState(null);
 
     const toast = useToast();
 
@@ -31,12 +31,19 @@ export default function ProfilePage() {
                 const snapshot = await getDocs(query(collection(fdb, "Users"), where("userID", "==", uid)));
                 snapshot.forEach((doc) => {
                     setUserDetails(doc.data());
-                    // Check for plan field in retrieved data
-                    if (doc.data().plan) {
-                        setPlan(doc.data().plan); // String value for plan name
-                    } else if (doc.data().plans) { // Check for sub-collection for complex plans
-                        // Handle retrieving and setting details from sub-collection
-                    }
+                });
+            }
+        };
+
+        querySnapshot();
+    }, [auth.currentUser, uid]);
+
+    useEffect(() => {
+        const querySnapshot = async () => {
+            if (auth.currentUser !== null) {
+                const snapshot = await getDocs(query(collection(fdb, "Transactions"), where("paymentId", "==", uid)));
+                snapshot.forEach((doc) => {
+                    setPaymentPlan(doc.data().purchasedPlan)
                 });
             }
         };
@@ -142,32 +149,32 @@ export default function ProfilePage() {
                                 <Text>{userDetails?.email}</Text>
                             </Stack>
                         </Flex>
-
-                        <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify="space-between">
-                            <Stack>
-                                <Heading fontSize="18px">Phone Number</Heading>
-                                <Text>{userDetails?.phoneNumber}</Text>
-                            </Stack>
-
-                            <Stack>
-                                <Heading textAlign={["left", "right"]} fontSize="18px">Address</Heading>
-                                <Text>{userDetails?.address}</Text>
-                            </Stack>
-                        </Flex>
-                        {plan && (
-                            <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify={"space-between"} >
+                            <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify="space-between">
                                 <Stack>
-                                    <Heading fontSize="18px">Plan</Heading>
-                                    <Text>{plan.name}</Text>
+                                    <Heading fontSize="18px">Phone Number</Heading>
+                                    <Text>{userDetails?.phoneNumber}</Text>
                                 </Stack>
-                                {/* Upgrade button if user doesn't have a paid plan  */}
-                                {!plan.ispaid && (
-                                    <CustomSolidButton as="Link" href="/pricing" >
-                                        Upgrade to a Paid Plan
-                                    </CustomSolidButton>
-                                )}
+
+                                <Stack>
+                                    <Heading textAlign={["left", "right"]} fontSize="18px">Address</Heading>
+                                    <Text>{userDetails?.address}</Text>
+                                </Stack>
+
                             </Flex>
-                        )}
+                            {paymentPlan !== "" ?
+                                <Flex gap={2} wrap="wrap" width={"100%"} px={10} justify={"space-between"} >
+                                    <Stack align={"start"}>
+                                        <Heading fontSize="18px">Plan</Heading>
+                                        <Text>{paymentPlan}</Text>
+                                    </Stack>
+                                </Flex>
+                                :
+                                <Link to={"/pricing"}>
+                                    <CustomSolidButton buttonText={"Purchase new plan"} />
+                                </Link>
+
+                            }
+
                         {userDetails?.isCompany === true &&
                             <Box>
                                 <Divider />
