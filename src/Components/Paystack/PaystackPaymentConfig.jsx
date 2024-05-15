@@ -4,11 +4,11 @@ import { Box, useToast } from "@chakra-ui/react"
 import "./styles.css"
 import { useSelector } from "react-redux"
 import { selectCurrentUser } from "../Store/user/userSelector"
-import { app, fdb } from "../Utils/Firebase/Firebase"
+import { app, fdb, transRef } from "../Utils/Firebase/Firebase"
 import { getAuth } from "firebase/auth"
-import { collection, getDocs, query, where } from "firebase/firestore"
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore"
 
-export default function PaywithPaystack({ amnt }) {
+export default function PaywithPaystack({ amnt, SelectedPlan }) {
 
     const [userDetails, setUserDetails] = useState([])
     const currentUser = useSelector(selectCurrentUser)
@@ -39,6 +39,20 @@ export default function PaywithPaystack({ amnt }) {
     const toast = useToast()
     const amount = amnt * 100
 
+    async function UploadTransaction() {
+        const transactionData = {
+            purchasedPlan: SelectedPlan,
+            amountPaid: amount,
+            customerName: name,
+            customerEmail: email,
+            customerPhoneNumber: phone,
+            paymentId: uid
+        }
+        await addDoc(transRef, transactionData).then(() => {
+            console.log("Transaction was added to transaction table successfully")
+        })
+    }
+
     const componentProps = {
         email,
         amount,
@@ -48,8 +62,11 @@ export default function PaywithPaystack({ amnt }) {
         },
         publicKey: pubKey,
         text: "Confirm and Pay",
-        onSuccess: () =>
-            toast({ title: "Payment Successful", description: "Your payment was successful, you will receive and email with confirmation of payment" }),
+        onSuccess: () => {
+            UploadTransaction()
+            toast({ title: "Payment Successful", status: "success", description: "Your payment was successful, you will receive and email with confirmation of payment" })
+
+        },
         onClose: () => alert("Are you sure you want to exit"),
     }
 
